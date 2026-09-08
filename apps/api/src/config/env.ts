@@ -22,7 +22,7 @@ const envSchema = z.object({
   SMTP_PASS: z.string().optional(),
   EMAIL_FROM: z.string().optional(),
   NODE_ENV: z.enum(['development', 'production', 'test']).default('development'),
-  API_PORT: z.coerce.number().default(3001),
+  API_PORT: z.coerce.number().default(process.env.PORT ? Number(process.env.PORT) : 3001),
   ANTHROPIC_API_KEY: z.string().optional().default(''),
   OPENAI_API_KEY: z.string().optional().default(''),
   N8N_WEBHOOK_URL: z.string().optional().default(''),
