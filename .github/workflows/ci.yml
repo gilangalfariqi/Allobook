@@ -1,0 +1,53 @@
+name: CI Pipeline
+
+on:
+  push:
+    branches: [main, master]
+  pull_request:
+    branches: [main, master]
+
+jobs:
+  validate:
+    name: Build, Typecheck & Test
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout Repository
+        uses: actions/checkout@v4
+
+      - name: Setup pnpm
+        uses: pnpm/action-setup@v3
+        with:
+          version: 9
+
+      - name: Setup Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: 20
+          cache: 'pnpm'
+
+      - name: Install Dependencies
+        run: pnpm install --frozen-lockfile
+
+      - name: Build Shared Packages
+        run: pnpm --filter @allobook/shared-types build
+
+      - name: Run Typecheck Across Monorepo
+        run: pnpm turbo run typecheck
+
+      - name: Run Backend Tests
+        run: pnpm --filter @allobook/api test
+        env:
+          NODE_ENV: test
+          JWT_SECRET: super-secret-jwt-key-min-16-chars
+          JWT_REFRESH_SECRET: super-refresh-jwt-key-min-16-chars
+
+      - name: Run Frontend Tests
+        run: pnpm --filter @allobook/web test
+
+      - name: Run Next.js Production Build
+        run: pnpm --filter @allobook/web build
+        env:
+          NEXT_PUBLIC_API_URL: http://localhost:3001
+          NEXT_PUBLIC_APP_URL: http://localhost:3000
+          NODE_ENV: production

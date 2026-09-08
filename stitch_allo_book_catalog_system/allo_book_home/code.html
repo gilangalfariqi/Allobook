@@ -1,0 +1,282 @@
+<!DOCTYPE html>
+
+<html lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Allo Book - Home</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Hanken+Grotesk:wght@400;500;600&amp;family=Libre+Caslon+Text:wght@400;700&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    "colors": {
+                        "inverse-primary": "#adcdc7",
+                        "primary-fixed": "#c8e9e3",
+                        "error-container": "#ffdad6",
+                        "surface-tint": "#46645f",
+                        "outline-variant": "#c1c8c6",
+                        "surface": "#faf9f7",
+                        "primary-fixed-dim": "#adcdc7",
+                        "tertiary-fixed": "#ffdbd0",
+                        "secondary": "#735c00",
+                        "surface-container-lowest": "#ffffff",
+                        "inverse-surface": "#2f3130",
+                        "on-tertiary-fixed": "#2e150c",
+                        "error": "#ba1a1a",
+                        "secondary-fixed": "#ffe088",
+                        "surface-container-highest": "#e3e2e0",
+                        "surface-dim": "#dadad8",
+                        "surface-container": "#efeeec",
+                        "on-background": "#1a1c1b",
+                        "inverse-on-surface": "#f1f1ef",
+                        "on-primary": "#ffffff",
+                        "on-error": "#ffffff",
+                        "on-tertiary-fixed-variant": "#603f34",
+                        "surface-container-high": "#e9e8e6",
+                        "primary": "#001915",
+                        "on-secondary-fixed": "#241a00",
+                        "background": "#faf9f7",
+                        "surface-bright": "#faf9f7",
+                        "surface-container-low": "#f4f3f1",
+                        "on-secondary-container": "#745c00",
+                        "on-surface": "#1a1c1b",
+                        "tertiary-container": "#3e2219",
+                        "surface-variant": "#e3e2e0",
+                        "on-primary-container": "#779691",
+                        "on-tertiary": "#ffffff",
+                        "tertiary-fixed-dim": "#ebbcae",
+                        "tertiary": "#260e07",
+                        "on-tertiary-container": "#b1877a",
+                        "on-primary-fixed": "#00201c",
+                        "on-surface-variant": "#414847",
+                        "on-secondary-fixed-variant": "#574500",
+                        "primary-container": "#0f2e2a",
+                        "on-secondary": "#ffffff",
+                        "secondary-container": "#fed65b",
+                        "on-primary-fixed-variant": "#2e4c48",
+                        "on-error-container": "#93000a",
+                        "outline": "#717977",
+                        "secondary-fixed-dim": "#e9c349"
+                    },
+                    "borderRadius": {
+                        "DEFAULT": "0.125rem",
+                        "lg": "0.25rem",
+                        "xl": "0.5rem",
+                        "full": "0.75rem"
+                    },
+                    "spacing": {
+                        "container-max": "1280px",
+                        "base": "8px",
+                        "stack-md": "24px",
+                        "stack-sm": "12px",
+                        "stack-lg": "48px",
+                        "gutter": "24px",
+                        "margin-mobile": "20px",
+                        "margin-desktop": "64px"
+                    },
+                    "fontFamily": {
+                        "headline-md": ["Libre Caslon Text"],
+                        "body-md": ["Hanken Grotesk"],
+                        "label-sm": ["Hanken Grotesk"],
+                        "label-md": ["Hanken Grotesk"],
+                        "display-lg": ["Libre Caslon Text"],
+                        "display-lg-mobile": ["Libre Caslon Text"],
+                        "body-lg": ["Hanken Grotesk"],
+                        "headline-sm": ["Libre Caslon Text"]
+                    },
+                    "fontSize": {
+                        "headline-md": ["32px", { "lineHeight": "40px", "fontWeight": "400" }],
+                        "body-md": ["16px", { "lineHeight": "24px", "fontWeight": "400" }],
+                        "label-sm": ["12px", { "lineHeight": "16px", "fontWeight": "500" }],
+                        "label-md": ["14px", { "lineHeight": "20px", "letterSpacing": "0.05em", "fontWeight": "600" }],
+                        "display-lg": ["48px", { "lineHeight": "56px", "letterSpacing": "-0.02em", "fontWeight": "700" }],
+                        "display-lg-mobile": ["32px", { "lineHeight": "40px", "letterSpacing": "-0.01em", "fontWeight": "700" }],
+                        "body-lg": ["18px", { "lineHeight": "28px", "fontWeight": "400" }],
+                        "headline-sm": ["24px", { "lineHeight": "32px", "fontWeight": "600" }]
+                    }
+                }
+            }
+        }
+    </script>
+<style>
+        .material-symbols-outlined {
+            font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+        }
+    </style>
+<style>
+    body {
+      min-height: max(884px, 100dvh);
+    }
+  </style>
+  </head>
+<body class="bg-surface text-on-surface font-body-md antialiased pb-24">
+<!-- TopAppBar -->
+<header class="sticky top-0 w-full z-50 bg-surface border-b border-outline-variant flex items-center justify-between px-margin-mobile md:px-margin-desktop h-16 w-full">
+<button class="text-primary hover:bg-surface-container-high active:opacity-80 transition-opacity p-2 rounded-full flex items-center justify-center">
+<span class="material-symbols-outlined">menu</span>
+</button>
+<h1 class="font-headline-md text-headline-md text-primary tracking-tight">Allo Book</h1>
+<button class="text-primary hover:bg-surface-container-high active:opacity-80 transition-opacity p-2 rounded-full flex items-center justify-center">
+<span class="material-symbols-outlined">shopping_cart</span>
+</button>
+</header>
+<!-- Main Content -->
+<main class="w-full">
+<!-- Hero Section -->
+<section class="px-margin-mobile py-stack-lg text-center flex flex-col items-center justify-center bg-surface-container-lowest">
+<h2 class="font-display-lg-mobile text-display-lg-mobile text-primary mb-stack-sm">Find Your Next Great Read</h2>
+<p class="font-body-lg text-body-lg text-on-surface-variant mb-stack-md max-w-md">Discover curated collections of timeless classics and modern masterpieces in our new editorial bookstore experience.</p>
+<button class="bg-primary-container text-on-primary-container font-label-md text-label-md px-6 py-3 rounded-DEFAULT hover:bg-primary hover:text-on-primary transition-colors">
+                Explore Books
+            </button>
+</section>
+<!-- Featured Books Grid -->
+<section class="px-margin-mobile py-stack-lg">
+<div class="flex items-center justify-between mb-stack-md">
+<h3 class="font-headline-sm text-headline-sm text-primary">Featured Selection</h3>
+<a class="font-label-md text-label-md text-on-surface-variant hover:text-primary transition-colors" href="#">View All</a>
+</div>
+<div class="grid grid-cols-2 gap-gutter">
+<!-- Book Card 1 -->
+<div class="flex flex-col group cursor-pointer">
+<div class="relative w-full pb-[150%] mb-stack-sm bg-surface-container overflow-hidden rounded-DEFAULT border border-surface-variant">
+<img class="absolute inset-0 w-full h-full object-cover group-hover:scale-105 transition-transform duration-500" data-alt="A highly detailed image of a minimalist, modern book cover featuring abstract geometric shapes in deep emerald greens and crisp whites. The book rests on a soft, light paper-textured surface illuminated by soft, natural studio lighting. The design system's quiet confidence is reflected in the clean, structural composition." src="https://lh3.googleusercontent.com/aida-public/AB6AXuAu-PHj6UD8XaucKkauKRzPUomw0HQpacgM04RcOWXr1jpMk3IvDbSNL7mJiOQydGLMpBBzMHr8flgyo5sUgTcyAdfmOuErkWwfJ5kT3H-kW-69aE9drC97y7JeCoznywa6QW-WRgTO22wbCBtpY78EG581xGOGdhsqcDD8IrWnjw3t-0GGSxAbo-xY3xU6oTcwiNVr_JdRS5NzhdaP6W2qYzUjwMUR65vyikM4sUkbqzfT6MhzIJrIuA"/>
+<div class="absolute inset-0 border border-black/5 pointer-events-none rounded-DEFAULT"></div>
+</div>
+<h4 class="font-headline-sm text-body-md text-primary truncate">The Silent Canvas</h4>
+<p class="font-body-md text-label-sm text-on-surface-variant opacity-60">Aura M. Sterling</p>
+</div>
+<!-- Book Card 2 -->
+<div class="flex flex-col group cursor-pointer">
+<div class="relative w-full pb-[150%] mb-stack-sm bg-surface-container overflow-hidden rounded-DEFAULT border border-surface-variant">
+<img class="absolute inset-0 w-full h-full object-cover group-hover:scale-105 transition-transform duration-500" data-alt="A highly detailed image of an elegant, modern book cover with typography-led design in stark black against a pure white background. The book is presented on a textured, light cream surface under soft, high-key lighting. The minimalist aesthetic embodies the new editorial style of sophisticated publishing." src="https://lh3.googleusercontent.com/aida-public/AB6AXuBWkAJMr-Ogq_LXC004yELsUEd2zLNTfgcqajA4mg013Ai7Umb9XZuw6JkZqfEzegmQQBy0qzXAv-ZIOJt2wN1mzQ14Nu46yqKHdG2gJU9Qg0IuvLOO1oV3aT3DM19Zghp82ZtxmFOGWO56NUkn_b7dUAUYUEdde469kBNsNSe8KxaajoA40SEzzr_-q745FfzXhcIT9ShHn5KQ_SNEAe2d4TYyFGFpcKYEp55oZozq8GwoSk6qdYfx5g"/>
+<div class="absolute inset-0 border border-black/5 pointer-events-none rounded-DEFAULT"></div>
+</div>
+<h4 class="font-headline-sm text-body-md text-primary truncate">Structures of Light</h4>
+<p class="font-body-md text-label-sm text-on-surface-variant opacity-60">David O. Rivers</p>
+</div>
+<!-- Book Card 3 -->
+<div class="flex flex-col group cursor-pointer">
+<div class="relative w-full pb-[150%] mb-stack-sm bg-surface-container overflow-hidden rounded-DEFAULT border border-surface-variant">
+<img class="absolute inset-0 w-full h-full object-cover group-hover:scale-105 transition-transform duration-500" data-alt="A highly detailed image of a sophisticated book cover featuring subtle, embossed architectural linework on a muted, organic taupe background. The book is displayed on a pristine white surface, lit by gentle, diffused daylight. The clean lines and tactile depth reflect a premium, curated gallery feel." src="https://lh3.googleusercontent.com/aida-public/AB6AXuAMnyoRTBY4EB67Wm09-jGwBgx2SkL763NwvYvNlFTFHC3GdQ2BdRZ4QHdTfWVWeW3h6LPTXWHDVCeGENBiyaioj5kS6xlVCC_8KuemIq9tvQIuyFbZunU1AoR24bI8-EjXgN-XXEY-Yp7FSTdBx04thisKNF_G1V5Iz1w5ZfTh8Yt6z2NMnWXsVyNWTuDYApjOswfJMn2E1qtM1A9RhDgxVwGE1xzCpnWn1g2Xyoss4v0yYMYDk8S7TA"/>
+<div class="absolute inset-0 border border-black/5 pointer-events-none rounded-DEFAULT"></div>
+</div>
+<h4 class="font-headline-sm text-body-md text-primary truncate">Urban Spaces</h4>
+<p class="font-body-md text-label-sm text-on-surface-variant opacity-60">Elena Rostova</p>
+</div>
+<!-- Book Card 4 -->
+<div class="flex flex-col group cursor-pointer">
+<div class="relative w-full pb-[150%] mb-stack-sm bg-surface-container overflow-hidden rounded-DEFAULT border border-surface-variant">
+<img class="absolute inset-0 w-full h-full object-cover group-hover:scale-105 transition-transform duration-500" data-alt="A highly detailed image of a contemporary book cover with a striking, minimalist botanical illustration in deep charcoal on a soft, light gray background. The book is placed on a smooth, paper-neutral surface with a soft ambient shadow. The overall mood is calm, focused, and deeply professional." src="https://lh3.googleusercontent.com/aida-public/AB6AXuAO1Pj3yiY_p3DS9GmTTLUvoppCO-QdGckayj1-aS1loEfUORQJBXK35CgM5vQJTYNWxUxzAvlW0WR_OLydWN_no8Gzhw2RSYg7I9Dfr7-uWLOmev73YRerjXoOaRBLeuygnOfFtuuTrbZdsqdk2iZLs5x_vl36jYPiHUGJ5P9CEXLP8xWH2PAtW-7xZj3lV9zVzAKWHS_p4zqisml35VwZPfT1ksrk8VoDC-yWwsYBkYXCfvoozkETGw"/>
+<div class="absolute inset-0 border border-black/5 pointer-events-none rounded-DEFAULT"></div>
+</div>
+<h4 class="font-headline-sm text-body-md text-primary truncate">Botany in Design</h4>
+<p class="font-body-md text-label-sm text-on-surface-variant opacity-60">Marcus Lin</p>
+</div>
+</div>
+</section>
+<!-- Pre-Order Section -->
+<section class="px-margin-mobile py-stack-lg bg-surface-container-low">
+<div class="flex items-center justify-between mb-stack-md">
+<h3 class="font-headline-sm text-headline-sm text-primary">Coming Soon</h3>
+</div>
+<div class="flex overflow-x-auto gap-gutter pb-stack-sm snap-x snap-mandatory hide-scrollbar" style="scrollbar-width: none;">
+<!-- Pre-Order Card 1 -->
+<div class="snap-start shrink-0 w-64 flex flex-col group cursor-pointer relative">
+<span class="absolute top-2 left-2 z-10 bg-surface-container-lowest text-primary font-label-sm text-label-sm px-2 py-1 rounded-full shadow-sm">Pre-Order</span>
+<div class="relative w-full pb-[130%] mb-stack-sm bg-surface-container overflow-hidden rounded-DEFAULT border border-surface-variant">
+<img class="absolute inset-0 w-full h-full object-cover group-hover:scale-105 transition-transform duration-500" data-alt="A highly detailed image of a mysterious, upcoming book cover with a blurred, evocative landscape in cool, muted tones of blue and gray. The book is presented on a clean, light surface with a soft, organic shadow tinged with emerald. The aesthetic is tactile, modern, and highly anticipated." src="https://lh3.googleusercontent.com/aida-public/AB6AXuCsS2b_9t54ySdrzJ44p6zVjfjRhSfZl4fgWpL4EAF1b7NA1EfxMnSiCmB0r6-jkScyxVxjAF_AHNXCczpJtfSdu-oNl_A3uCG_1iEdGVc-hhlBQFxv61JYGEZUT8qMLUp9smx6inYou1GeGcTjVNzHk39wlEv7OtiwRTJMhJaErXB113gr3cc_KAojlGe9Pdj8j4E-pGKy7LgQ4ueUHA3MUvI4KWNATTJB7q6sBSTjP8beLLuGwaiBHQ"/>
+</div>
+<h4 class="font-headline-sm text-body-md text-primary truncate">The Northern Echo</h4>
+<p class="font-body-md text-label-sm text-on-surface-variant opacity-60 mb-2">Releases Oct 12</p>
+<button class="w-full border border-primary-container text-primary-container font-label-md text-label-md py-2 rounded-DEFAULT hover:bg-primary-container hover:text-on-primary-container transition-colors">
+                        Reserve Copy
+                    </button>
+</div>
+<!-- Pre-Order Card 2 -->
+<div class="snap-start shrink-0 w-64 flex flex-col group cursor-pointer relative">
+<span class="absolute top-2 left-2 z-10 bg-surface-container-lowest text-primary font-label-sm text-label-sm px-2 py-1 rounded-full shadow-sm">Pre-Order</span>
+<div class="relative w-full pb-[130%] mb-stack-sm bg-surface-container overflow-hidden rounded-DEFAULT border border-surface-variant">
+<img class="absolute inset-0 w-full h-full object-cover group-hover:scale-105 transition-transform duration-500" data-alt="A highly detailed image of a highly anticipated book cover featuring stark, modern typography intertwined with subtle, abstract digital wave patterns. The book rests on a pristine white desk under soft, controlled gallery lighting. The scene exudes quiet confidence and editorial sophistication." src="https://lh3.googleusercontent.com/aida-public/AB6AXuDu-k57vOWPBPQncA-fvkEnzSLdoImgaMsh_V-xVuhHrF2S6S9hpBe7FZzAjaSfoNF2WPmqd2nuxf0c6sHHPfzZLXftysgMk2Kn6q5J2adZJRxX_70hINYo6Kj-o4R7_sHG9bycgPiCB-8yqKvioGxaeB2dNiWBwBH4jNBIGwKGkEb7pBA8YS-6tf5mzUo7Ql6PjGDUtzuO3NU_mwBAwfZh9yxJzhyfXaH_9ngfqVSraT2xLrZCKYI4sA"/>
+</div>
+<h4 class="font-headline-sm text-body-md text-primary truncate">Digital Silence</h4>
+<p class="font-body-md text-label-sm text-on-surface-variant opacity-60 mb-2">Releases Nov 05</p>
+<button class="w-full border border-primary-container text-primary-container font-label-md text-label-md py-2 rounded-DEFAULT hover:bg-primary-container hover:text-on-primary-container transition-colors">
+                        Reserve Copy
+                    </button>
+</div>
+</div>
+</section>
+<!-- Categories Section -->
+<section class="px-margin-mobile py-stack-lg">
+<h3 class="font-headline-sm text-headline-sm text-primary mb-stack-md">Explore by Category</h3>
+<div class="grid grid-cols-2 gap-stack-sm">
+<div class="relative overflow-hidden rounded-DEFAULT aspect-[4/3] group cursor-pointer">
+<img class="absolute inset-0 w-full h-full object-cover group-hover:scale-105 transition-transform duration-500" data-alt="A highly detailed image representing a 'Fiction' category. A soft, beautifully bound book lying open on a textured white fabric, lit by gentle, warm afternoon sunlight casting soft shadows. The mood is immersive, imaginative, and deeply rooted in the clean, new editorial design language." src="https://lh3.googleusercontent.com/aida-public/AB6AXuAKlEmX_4QJrZtxwg0sAAbD0RP_Qe9swodbKVg27On3tTQPFe1J0ZtnrDLwuDO0oWzhFFFhaqGNT3ngAnPSNWCXWBWlrmQydv0OM3-7u4gA8_Co2faaWmFy3XfM7jafD9yNVuI3M6VFWtT9s9Sim9egX2_0cuk4lrLDd58-xpj0I9K2i72mtxzaunJtTQJQVO6EPS8CnqAePixElpceD03xMvvr-5R0F4ak7YsFIT3nd4HfS_FCYGcKDQ"/>
+<div class="absolute inset-0 bg-black/30 flex items-center justify-center">
+<span class="font-headline-sm text-body-lg text-white">Fiction</span>
+</div>
+</div>
+<div class="relative overflow-hidden rounded-DEFAULT aspect-[4/3] group cursor-pointer">
+<img class="absolute inset-0 w-full h-full object-cover group-hover:scale-105 transition-transform duration-500" data-alt="A highly detailed image representing a 'Non-Fiction' category. A stack of clean, modern, minimalist notebooks and a sleek pen on a smooth, light gray slate surface under bright, even studio lighting. The aesthetic is professional, factual, and strictly adheres to the sophisticated grid-based visual identity." src="https://lh3.googleusercontent.com/aida-public/AB6AXuDSi-XGBjYLsEdmoOV2_0ewtSUGliHRyRWBy_YnaSoiQM78QgHkhqfhFePYig9qGIR0F6tsi07yZnvvjyyo-nNH2nddYYF-75tV7bxp1TOBbbAZfhpjHPMkJnIZUEwlctObouJEHSclmOdaFH6A7ifbt99M4pkGvDl1rotfyt-spAhH8UYS4In04zdRP3-wY2Fd6zCsB2QVnebw0nIb97oTLSSQy8gJrCXYoLcgOlaMydqiS_SeIPufJA"/>
+<div class="absolute inset-0 bg-black/30 flex items-center justify-center">
+<span class="font-headline-sm text-body-lg text-white">Non-Fiction</span>
+</div>
+</div>
+<div class="relative overflow-hidden rounded-DEFAULT aspect-[4/3] group cursor-pointer">
+<img class="absolute inset-0 w-full h-full object-cover group-hover:scale-105 transition-transform duration-500" data-alt="A highly detailed image representing an 'Art &amp; Design' category. A pristine, open art monograph displaying geometric, modern art on a crisp white table, illuminated by high-key, gallery-style lighting. The composition embraces aggressive use of whitespace, embodying tactile digitalism and high-end publishing." src="https://lh3.googleusercontent.com/aida-public/AB6AXuCANuyR4NmqNTsXqolFvFCz5ROED_UYhv2B6R1I9FFzINEkoLNYqZ7esyZlXkAC_II7XMfsx7HGIgcp3Tcbf-9_-tcsj1KAGpSfaPCzbDjDWW6uS3SyR0Q6nwRqx8_X-Yql8wi7lY_MatQenQnVFRzFdwgKa3Ay4DbiPPOTxUBnksRjNHl0j7nkqWhATOGjm0Od-e4PyUxORHVXq4z3lhuXe_gx4lfPCSQ_XVgejf1HQbtKwvidMbhvkw"/>
+<div class="absolute inset-0 bg-black/30 flex items-center justify-center">
+<span class="font-headline-sm text-body-lg text-white">Art &amp; Design</span>
+</div>
+</div>
+<div class="relative overflow-hidden rounded-DEFAULT aspect-[4/3] group cursor-pointer bg-surface-container flex items-center justify-center">
+<span class="font-label-md text-label-md text-primary">View All Categories</span>
+</div>
+</div>
+</section>
+<!-- Newsletter Section -->
+<section class="px-margin-mobile py-stack-lg bg-surface-container-highest border-t border-surface-variant text-center">
+<h3 class="font-headline-sm text-headline-sm text-primary mb-stack-sm">The Reading List</h3>
+<p class="font-body-md text-body-md text-on-surface-variant mb-stack-md max-w-sm mx-auto">Subscribe for curated recommendations, new releases, and editorial insights delivered to your inbox.</p>
+<form class="flex flex-col gap-stack-sm max-w-sm mx-auto">
+<input class="bg-surface-container-lowest border border-outline-variant focus:border-primary-container focus:ring-1 focus:ring-primary-container font-body-md text-body-md px-4 py-3 rounded-DEFAULT w-full outline-none transition-colors" placeholder="Email Address" type="email"/>
+<button class="bg-primary-container text-on-primary-container font-label-md text-label-md px-6 py-3 rounded-DEFAULT hover:bg-primary hover:text-on-primary transition-colors w-full" type="submit">
+                    Subscribe
+                </button>
+</form>
+</section>
+</main>
+<!-- BottomNavBar -->
+<nav class="fixed bottom-0 w-full z-50 bg-surface border-t border-outline-variant flex justify-around items-center h-16 w-full pb-safe md:hidden">
+<a class="flex flex-col items-center justify-center text-primary font-bold active:scale-95 transition-transform w-1/5" href="#">
+<span class="material-symbols-outlined" style="font-variation-settings: 'FILL' 1;">home</span>
+<span class="font-label-sm text-label-sm mt-1">Home</span>
+</a>
+<a class="flex flex-col items-center justify-center text-on-surface-variant opacity-70 hover:text-primary active:scale-95 transition-transform w-1/5" href="#">
+<span class="material-symbols-outlined">menu_book</span>
+<span class="font-label-sm text-label-sm mt-1">Catalog</span>
+</a>
+<a class="flex flex-col items-center justify-center text-on-surface-variant opacity-70 hover:text-primary active:scale-95 transition-transform w-1/5" href="#">
+<span class="material-symbols-outlined">favorite</span>
+<span class="font-label-sm text-label-sm mt-1">Wishlist</span>
+</a>
+<a class="flex flex-col items-center justify-center text-on-surface-variant opacity-70 hover:text-primary active:scale-95 transition-transform w-1/5" href="#">
+<span class="material-symbols-outlined">shopping_bag</span>
+<span class="font-label-sm text-label-sm mt-1">Cart</span>
+</a>
+<a class="flex flex-col items-center justify-center text-on-surface-variant opacity-70 hover:text-primary active:scale-95 transition-transform w-1/5" href="#">
+<span class="material-symbols-outlined">person</span>
+<span class="font-label-sm text-label-sm mt-1">Account</span>
+</a>
+</nav>
+<style>
+        /* Hide scrollbar for pre-order section but keep functionality */
+        .hide-scrollbar::-webkit-scrollbar {
+            display: none;
+        }
+    </style>
+</body></html>

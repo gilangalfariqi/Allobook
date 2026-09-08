@@ -1,0 +1,178 @@
+<!DOCTYPE html>
+
+<html lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Allo Book - Order Confirmation</title>
+<!-- Google Fonts: Libre Caslon Text & Hanken Grotesk -->
+<link href="https://fonts.googleapis.com" rel="preconnect"/>
+<link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect"/>
+<link href="https://fonts.googleapis.com/css2?family=Hanken+Grotesk:wght@400;500;600&amp;family=Libre+Caslon+Text:wght@400;700&amp;display=swap" rel="stylesheet"/>
+<!-- Material Symbols -->
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<!-- Tailwind CSS -->
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<!-- Tailwind Config -->
+<script id="tailwind-config">
+      tailwind.config = {
+        darkMode: "class",
+        theme: {
+          extend: {
+            "colors": {
+                    "inverse-primary": "#adcdc7",
+                    "primary-fixed": "#c8e9e3",
+                    "error-container": "#ffdad6",
+                    "surface-tint": "#46645f",
+                    "outline-variant": "#c1c8c6",
+                    "surface": "#faf9f7",
+                    "primary-fixed-dim": "#adcdc7",
+                    "tertiary-fixed": "#ffdbd0",
+                    "secondary": "#735c00",
+                    "surface-container-lowest": "#ffffff",
+                    "inverse-surface": "#2f3130",
+                    "on-tertiary-fixed": "#2e150c",
+                    "error": "#ba1a1a",
+                    "secondary-fixed": "#ffe088",
+                    "surface-container-highest": "#e3e2e0",
+                    "surface-dim": "#dadad8",
+                    "surface-container": "#efeeec",
+                    "on-background": "#1a1c1b",
+                    "inverse-on-surface": "#f1f1ef",
+                    "on-primary": "#ffffff",
+                    "on-error": "#ffffff",
+                    "on-tertiary-fixed-variant": "#603f34",
+                    "surface-container-high": "#e9e8e6",
+                    "primary": "#001915",
+                    "on-secondary-fixed": "#241a00",
+                    "background": "#faf9f7",
+                    "surface-bright": "#faf9f7",
+                    "surface-container-low": "#f4f3f1",
+                    "on-secondary-container": "#745c00",
+                    "on-surface": "#1a1c1b",
+                    "tertiary-container": "#3e2219",
+                    "surface-variant": "#e3e2e0",
+                    "on-primary-container": "#779691",
+                    "on-tertiary": "#ffffff",
+                    "tertiary-fixed-dim": "#ebbcae",
+                    "tertiary": "#260e07",
+                    "on-tertiary-container": "#b1877a",
+                    "on-primary-fixed": "#00201c",
+                    "on-surface-variant": "#414847",
+                    "on-secondary-fixed-variant": "#574500",
+                    "primary-container": "#0f2e2a",
+                    "on-secondary": "#ffffff",
+                    "secondary-container": "#fed65b",
+                    "on-primary-fixed-variant": "#2e4c48",
+                    "on-error-container": "#93000a",
+                    "outline": "#717977",
+                    "secondary-fixed-dim": "#e9c349"
+            },
+            "borderRadius": {
+                    "DEFAULT": "0.125rem",
+                    "lg": "0.25rem",
+                    "xl": "0.5rem",
+                    "full": "0.75rem"
+            },
+            "spacing": {
+                    "container-max": "1280px",
+                    "base": "8px",
+                    "stack-md": "24px",
+                    "stack-sm": "12px",
+                    "stack-lg": "48px",
+                    "gutter": "24px",
+                    "margin-mobile": "20px",
+                    "margin-desktop": "64px"
+            },
+            "fontFamily": {
+                    "headline-md": ["Libre Caslon Text"],
+                    "body-md": ["Hanken Grotesk"],
+                    "label-sm": ["Hanken Grotesk"],
+                    "label-md": ["Hanken Grotesk"],
+                    "display-lg": ["Libre Caslon Text"],
+                    "display-lg-mobile": ["Libre Caslon Text"],
+                    "body-lg": ["Hanken Grotesk"],
+                    "headline-sm": ["Libre Caslon Text"]
+            },
+            "fontSize": {
+                    "headline-md": ["32px", {"lineHeight": "40px", "fontWeight": "400"}],
+                    "body-md": ["16px", {"lineHeight": "24px", "fontWeight": "400"}],
+                    "label-sm": ["12px", {"lineHeight": "16px", "fontWeight": "500"}],
+                    "label-md": ["14px", {"lineHeight": "20px", "letterSpacing": "0.05em", "fontWeight": "600"}],
+                    "display-lg": ["48px", {"lineHeight": "56px", "letterSpacing": "-0.02em", "fontWeight": "700"}],
+                    "display-lg-mobile": ["32px", {"lineHeight": "40px", "letterSpacing": "-0.01em", "fontWeight": "700"}],
+                    "body-lg": ["18px", {"lineHeight": "28px", "fontWeight": "400"}],
+                    "headline-sm": ["24px", {"lineHeight": "32px", "fontWeight": "600"}]
+            }
+          }
+        }
+      }
+    </script>
+<style>
+        .material-symbols-outlined {
+            font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+        }
+        /* Soft Ambient Shadow for primary CTA */
+        .shadow-ambient {
+            box-shadow: 0px 4px 20px rgba(15, 46, 42, 0.08);
+        }
+    </style>
+<style>
+    body {
+      min-height: max(884px, 100dvh);
+    }
+  </style>
+  </head>
+<body class="bg-surface text-on-surface antialiased min-h-screen flex flex-col">
+<!-- 
+      Note: TopAppBar and BottomNavBar are intentionally suppressed per the 
+      Conflict Resolution Protocol for Transactional/Success screens.
+    -->
+<main class="flex-grow flex flex-col px-margin-mobile py-stack-lg max-w-md mx-auto w-full">
+<!-- Header Section -->
+<header class="flex flex-col items-center text-center mt-stack-md">
+<span class="material-symbols-outlined text-[64px] text-primary" style="font-variation-settings: 'FILL' 1;">
+                check_circle
+            </span>
+<h1 class="font-display-lg-mobile text-display-lg-mobile text-on-surface mt-stack-md">
+                Your Order<br/>is Ready
+            </h1>
+<p class="font-body-md text-body-md text-on-surface-variant mt-base">
+                Order #AB-20260816-001
+            </p>
+</header>
+<!-- Summary Card (Level 1 Surface with Ghost Border) -->
+<section class="mt-stack-lg bg-surface-container-lowest border border-surface-variant rounded-xl p-stack-md flex flex-col gap-stack-sm">
+<div class="flex justify-between items-center border-b border-surface-variant pb-stack-sm">
+<span class="font-body-md text-body-md text-on-surface-variant">Customer</span>
+<span class="font-body-md text-body-md text-on-surface font-medium">Eleanor Vance</span>
+</div>
+<div class="flex justify-between items-center border-b border-surface-variant pb-stack-sm">
+<span class="font-body-md text-body-md text-on-surface-variant">Items</span>
+<span class="font-body-md text-body-md text-on-surface font-medium">3</span>
+</div>
+<div class="flex justify-between items-center pt-base">
+<span class="font-body-md text-body-md text-on-surface-variant">Estimated Total</span>
+<span class="font-headline-sm text-headline-sm text-primary">$84.50</span>
+</div>
+</section>
+<!-- Explanation Text -->
+<div class="mt-stack-lg px-base text-center">
+<p class="font-body-md text-body-md text-on-surface-variant">
+                To finalize your purchase and arrange shipping, please send your order details to our concierge team.
+            </p>
+</div>
+<!-- Call to Action -->
+<div class="mt-stack-md mt-auto pb-stack-lg">
+<button class="w-full bg-primary text-on-primary py-[16px] px-stack-md rounded-lg flex items-center justify-center gap-base font-label-md text-label-md shadow-ambient active:scale-[0.98] transition-transform">
+<span class="material-symbols-outlined text-[20px]">
+                    send
+                </span>
+                Send Order to WhatsApp
+            </button>
+<button class="w-full mt-stack-sm text-on-surface-variant py-[12px] px-stack-md flex items-center justify-center font-label-md text-label-md hover:text-primary transition-colors">
+                Return to Store
+            </button>
+</div>
+</main>
+</body></html>

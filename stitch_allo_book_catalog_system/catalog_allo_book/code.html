@@ -1,0 +1,430 @@
+<!DOCTYPE html>
+
+<html class="light" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Allo Book - Catalog</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Libre+Caslon+Text:wght@400;700&amp;family=Hanken+Grotesk:wght@400;500;600&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+        tailwind.config = {
+          darkMode: "class",
+          theme: {
+            extend: {
+              "colors": {
+                      "inverse-primary": "#adcdc7",
+                      "primary-fixed": "#c8e9e3",
+                      "error-container": "#ffdad6",
+                      "surface-tint": "#46645f",
+                      "outline-variant": "#c1c8c6",
+                      "surface": "#faf9f7",
+                      "primary-fixed-dim": "#adcdc7",
+                      "tertiary-fixed": "#ffdbd0",
+                      "secondary": "#735c00",
+                      "surface-container-lowest": "#ffffff",
+                      "inverse-surface": "#2f3130",
+                      "on-tertiary-fixed": "#2e150c",
+                      "error": "#ba1a1a",
+                      "secondary-fixed": "#ffe088",
+                      "surface-container-highest": "#e3e2e0",
+                      "surface-dim": "#dadad8",
+                      "surface-container": "#efeeec",
+                      "on-background": "#1a1c1b",
+                      "inverse-on-surface": "#f1f1ef",
+                      "on-primary": "#ffffff",
+                      "on-error": "#ffffff",
+                      "on-tertiary-fixed-variant": "#603f34",
+                      "surface-container-high": "#e9e8e6",
+                      "primary": "#001915",
+                      "on-secondary-fixed": "#241a00",
+                      "background": "#faf9f7",
+                      "surface-bright": "#faf9f7",
+                      "surface-container-low": "#f4f3f1",
+                      "on-secondary-container": "#745c00",
+                      "on-surface": "#1a1c1b",
+                      "tertiary-container": "#3e2219",
+                      "surface-variant": "#e3e2e0",
+                      "on-primary-container": "#779691",
+                      "on-tertiary": "#ffffff",
+                      "tertiary-fixed-dim": "#ebbcae",
+                      "tertiary": "#260e07",
+                      "on-tertiary-container": "#b1877a",
+                      "on-primary-fixed": "#00201c",
+                      "on-surface-variant": "#414847",
+                      "on-secondary-fixed-variant": "#574500",
+                      "primary-container": "#0f2e2a",
+                      "on-secondary": "#ffffff",
+                      "secondary-container": "#fed65b",
+                      "on-primary-fixed-variant": "#2e4c48",
+                      "on-error-container": "#93000a",
+                      "outline": "#717977",
+                      "secondary-fixed-dim": "#e9c349"
+              },
+              "borderRadius": {
+                      "DEFAULT": "0.125rem",
+                      "lg": "0.25rem",
+                      "xl": "0.5rem",
+                      "full": "0.75rem"
+              },
+              "spacing": {
+                      "container-max": "1280px",
+                      "base": "8px",
+                      "stack-md": "24px",
+                      "stack-sm": "12px",
+                      "stack-lg": "48px",
+                      "gutter": "24px",
+                      "margin-mobile": "20px",
+                      "margin-desktop": "64px"
+              },
+              "fontFamily": {
+                      "headline-md": [
+                              "Libre Caslon Text"
+                      ],
+                      "body-md": [
+                              "Hanken Grotesk"
+                      ],
+                      "label-sm": [
+                              "Hanken Grotesk"
+                      ],
+                      "label-md": [
+                              "Hanken Grotesk"
+                      ],
+                      "display-lg": [
+                              "Libre Caslon Text"
+                      ],
+                      "display-lg-mobile": [
+                              "Libre Caslon Text"
+                      ],
+                      "body-lg": [
+                              "Hanken Grotesk"
+                      ],
+                      "headline-sm": [
+                              "Libre Caslon Text"
+                      ]
+              },
+              "fontSize": {
+                      "headline-md": [
+                              "32px",
+                              {
+                                      "lineHeight": "40px",
+                                      "fontWeight": "400"
+                              }
+                      ],
+                      "body-md": [
+                              "16px",
+                              {
+                                      "lineHeight": "24px",
+                                      "fontWeight": "400"
+                              }
+                      ],
+                      "label-sm": [
+                              "12px",
+                              {
+                                      "lineHeight": "16px",
+                                      "fontWeight": "500"
+                              }
+                      ],
+                      "label-md": [
+                              "14px",
+                              {
+                                      "lineHeight": "20px",
+                                      "letterSpacing": "0.05em",
+                                      "fontWeight": "600"
+                              }
+                      ],
+                      "display-lg": [
+                              "48px",
+                              {
+                                      "lineHeight": "56px",
+                                      "letterSpacing": "-0.02em",
+                                      "fontWeight": "700"
+                              }
+                      ],
+                      "display-lg-mobile": [
+                              "32px",
+                              {
+                                      "lineHeight": "40px",
+                                      "letterSpacing": "-0.01em",
+                                      "fontWeight": "700"
+                              }
+                      ],
+                      "body-lg": [
+                              "18px",
+                              {
+                                      "lineHeight": "28px",
+                                      "fontWeight": "400"
+                              }
+                      ],
+                      "headline-sm": [
+                              "24px",
+                              {
+                                      "lineHeight": "32px",
+                                      "fontWeight": "600"
+                              }
+                      ]
+              }
+            },
+          },
+        }
+      </script>
+<style>
+        .material-symbols-outlined {
+            font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+        }
+        .material-symbols-outlined.fill {
+            font-variation-settings: 'FILL' 1, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+        }
+        
+        body {
+            background-color: #F9F8F6; /* Level 0 Base Paper neutral */
+        }
+        
+        .book-card-surface {
+            background-color: #FFFFFF; /* Level 1 Pure White */
+            border: 1px solid #E5E5E1; /* Ghost Border */
+        }
+        
+        .book-cover-image {
+            border: 1px solid rgba(0, 25, 21, 0.05); /* Slight inner stroke */
+        }
+        
+        /* Hide scrollbar for horizontal scroll areas */
+        .no-scrollbar::-webkit-scrollbar {
+            display: none;
+        }
+        .no-scrollbar {
+            -ms-overflow-style: none;
+            scrollbar-width: none;
+        }
+        
+        /* Focus styles for inputs */
+        input:focus {
+            outline: none;
+            border-color: #001915; /* Oxford Emerald */
+            border-width: 2px;
+            box-shadow: none;
+        }
+        
+        .btn-primary {
+            background-color: #001915; /* primary emerald */
+            color: #ffffff;
+            box-shadow: 0px 4px 20px rgba(15, 46, 42, 0.08);
+        }
+        
+        .btn-secondary {
+            border: 1px solid #001915;
+            color: #001915;
+            background-color: transparent;
+        }
+        
+        .chip {
+            background-color: #EFEFEA;
+            border-radius: 9999px;
+        }
+    </style>
+<style>
+    body {
+      min-height: max(884px, 100dvh);
+    }
+  </style>
+  </head>
+<body class="text-on-background bg-surface font-body-md min-h-screen flex flex-col pt-16 pb-24">
+<!-- TopAppBar -->
+<header class="bg-surface dark:bg-surface-dim sticky top-0 w-full z-50 flex items-center justify-between px-margin-mobile md:px-margin-desktop h-16 transition-colors border-b border-outline-variant dark:border-on-surface-variant md:border-none shadow-none">
+<button class="text-on-surface-variant dark:text-on-surface-variant hover:bg-surface-container-high dark:hover:bg-surface-container-highest transition-colors active:opacity-80 p-2 rounded-full md:hidden flex items-center justify-center">
+<span class="material-symbols-outlined" data-icon="menu">menu</span>
+</button>
+<div class="font-headline-md text-headline-md text-primary dark:text-inverse-primary tracking-tight font-bold">
+            Allo Book
+        </div>
+<button class="text-on-surface-variant dark:text-on-surface-variant hover:bg-surface-container-high dark:hover:bg-surface-container-highest transition-colors active:opacity-80 p-2 rounded-full flex items-center justify-center">
+<span class="material-symbols-outlined" data-icon="shopping_cart">shopping_cart</span>
+</button>
+</header>
+<!-- Main Content Canvas -->
+<main class="flex-grow w-full max-w-container-max mx-auto px-margin-mobile md:px-margin-desktop py-stack-md flex flex-col gap-stack-md">
+<!-- Search and Filter Section -->
+<section class="flex flex-col gap-stack-sm sticky top-16 bg-surface z-40 py-2">
+<div class="relative w-full">
+<span class="material-symbols-outlined absolute left-3 top-1/2 transform -translate-y-1/2 text-on-surface-variant">search</span>
+<input class="w-full pl-10 pr-4 py-3 bg-surface-container-lowest border border-[#D1D1CB] rounded font-body-md text-on-background placeholder:text-on-surface-variant transition-all" placeholder="Search authors, titles, ISBN..." type="text"/>
+</div>
+<!-- Horizontal Filter Chips (Mobile optimized) -->
+<div class="flex overflow-x-auto no-scrollbar gap-2 py-1">
+<button class="flex items-center gap-1 px-4 py-2 border border-outline-variant rounded-full text-label-md font-label-md whitespace-nowrap text-on-surface">
+<span class="material-symbols-outlined text-[18px]">tune</span>
+                    Filters
+                </button>
+<button class="flex items-center gap-1 px-4 py-2 chip text-label-md font-label-md whitespace-nowrap text-on-surface">
+                    Architecture
+                </button>
+<button class="flex items-center gap-1 px-4 py-2 chip text-label-md font-label-md whitespace-nowrap text-on-surface">
+                    Design Theory
+                </button>
+<button class="flex items-center gap-1 px-4 py-2 chip text-label-md font-label-md whitespace-nowrap text-on-surface">
+                    Monographs
+                </button>
+<button class="flex items-center gap-1 px-4 py-2 border border-outline-variant rounded-full text-label-md font-label-md whitespace-nowrap text-on-surface">
+                    Sort: Newest
+                    <span class="material-symbols-outlined text-[18px]">expand_more</span>
+</button>
+</div>
+</section>
+<!-- Catalog Grid -->
+<section class="grid grid-cols-2 md:grid-cols-4 gap-x-4 gap-y-stack-md pt-stack-sm">
+<!-- Book Card 1 -->
+<article class="flex flex-col group cursor-pointer h-full">
+<div class="relative aspect-[2/3] w-full mb-3 overflow-hidden bg-surface-container-low book-cover-image">
+<img alt="Book Cover" class="w-full h-full object-cover transition-transform duration-500 group-hover:scale-105" data-alt="A meticulously designed book cover featuring minimalist brutalist concrete architecture set against a stark white background. The title 'Spaces' is elegantly typeset in a modern serif font. High-end editorial photography style, perfectly lit to show subtle paper textures. Premium light-mode aesthetic with muted, sophisticated tones." src="https://lh3.googleusercontent.com/aida-public/AB6AXuB-9a2QcGqsOqj1AqILhNyv2G7ZcNOlEsB01ShvEYX8x0MzaP9x0r04r2nVEPeQ2N8vDMWYcSYVMatwLeCEZT1O_1nWvy-l38oMwV1JpEKkY1Udwaeonwl-aBA_dYcTvs1vcYzDdMRBo0dgzuBfm12pCYCBAODp3l_RyKOxAvCd5Bhhm8BzHwUotNE3fRbQzn4scPsW1tV6N0iIqiK7kvYwLPAouzf1CQVgtnxtYdZPfxKA9mIgJXK-5Q"/>
+<div class="absolute top-2 left-2 bg-surface-container-lowest border border-outline-variant px-2 py-1 text-[10px] font-label-sm uppercase tracking-wider text-primary">
+                        Available
+                    </div>
+</div>
+<div class="flex flex-col flex-grow">
+<h3 class="font-headline-sm text-headline-sm text-on-background line-clamp-2 leading-tight mb-1">Brutalist Spaces &amp; Beyond</h3>
+<p class="font-body-md text-body-md text-on-surface-variant opacity-60 line-clamp-1 mb-2">Elena Rostova</p>
+<div class="mt-auto flex items-center justify-between">
+<span class="font-body-md text-body-md text-primary font-medium">$45.00</span>
+<button aria-label="Add to cart" class="w-8 h-8 rounded-full border border-primary flex items-center justify-center text-primary hover:bg-primary hover:text-on-primary transition-colors">
+<span class="material-symbols-outlined text-[18px]" data-icon="add">add</span>
+</button>
+</div>
+</div>
+</article>
+<!-- Book Card 2 -->
+<article class="flex flex-col group cursor-pointer h-full">
+<div class="relative aspect-[2/3] w-full mb-3 overflow-hidden bg-surface-container-low book-cover-image">
+<img alt="Book Cover" class="w-full h-full object-cover transition-transform duration-500 group-hover:scale-105" data-alt="A sophisticated modern art book cover displaying abstract geometric shapes in deep black and vibrant emerald green. The cover design is clean, with extensive negative space. Photographed from a slightly elevated angle to emphasize the premium matte finish of the paper stock. Bright, minimalist studio lighting setting." src="https://lh3.googleusercontent.com/aida-public/AB6AXuAdwFXRmccbwLcoCXf7O6mKqgcIs-ty6KaC0QCaVGvyvztO9AeRg8lWBKugCaVGwfaGCTQo-kWNubm84pGmwehUFeT461YeH3MGk4Pd1VKEn7AR7R-6EWmX1LNs7DPwJvPh_sIJBOeGNnDoN3voeceNaOPMTVNK-8YklhLXAQD0JmiqkY1UlcyYL64og87SfgvjH-67SSswoZNw4yen7nhb1XSsTs449rHYpwZbit3OJrbtJmTEztQMKw"/>
+<div class="absolute top-2 left-2 bg-primary text-on-primary px-2 py-1 text-[10px] font-label-sm uppercase tracking-wider">
+                        Pre-Order
+                    </div>
+</div>
+<div class="flex flex-col flex-grow">
+<h3 class="font-headline-sm text-headline-sm text-on-background line-clamp-2 leading-tight mb-1">Form and Void: A Theory</h3>
+<p class="font-body-md text-body-md text-on-surface-variant opacity-60 line-clamp-1 mb-2">Marcus Chen</p>
+<div class="mt-auto flex items-center justify-between">
+<span class="font-body-md text-body-md text-primary font-medium">$62.00</span>
+<button aria-label="Add to cart" class="w-8 h-8 rounded-full border border-primary flex items-center justify-center text-primary hover:bg-primary hover:text-on-primary transition-colors">
+<span class="material-symbols-outlined text-[18px]" data-icon="add">add</span>
+</button>
+</div>
+</div>
+</article>
+<!-- Book Card 3 -->
+<article class="flex flex-col group cursor-pointer h-full">
+<div class="relative aspect-[2/3] w-full mb-3 overflow-hidden bg-surface-container-low book-cover-image">
+<img alt="Book Cover" class="w-full h-full object-cover transition-transform duration-500 group-hover:scale-105" data-alt="An elegant typography-focused book cover with large, debossed serif letters on a textured, off-white background. The title reads 'Grid Systems'. The lighting highlights the tactile depth of the debossing. Shot in a minimal, bright setting typical of high-end editorial catalogs, conveying quiet confidence and authority." src="https://lh3.googleusercontent.com/aida-public/AB6AXuDj64tMeUeDD0qmtWTADfXms114koDst-r78WXZ2nCjR1fMPEZ-F1WzjiKHp68NgN2IKM2Uo_ytrSCZzVc62FLJZYoSQjnbQSGU9AgDh-6BhmV8dQsA4F5-gkMreiWkbpB4cD2qbu614xKX9imfFDCxze9ltn5YY4k-5AD-r76NHqvXmuSiJzuaiiN1Np1pVEpt7IhMr0IY8EcMvi4lC-zTQXHH54rzZi__sCxGzIk6RZSODE4czDA_rQ"/>
+<div class="absolute top-2 left-2 bg-surface-container-lowest border border-outline-variant px-2 py-1 text-[10px] font-label-sm uppercase tracking-wider text-primary">
+                        Available
+                    </div>
+</div>
+<div class="flex flex-col flex-grow">
+<h3 class="font-headline-sm text-headline-sm text-on-background line-clamp-2 leading-tight mb-1">Modernist Grid Structures</h3>
+<p class="font-body-md text-body-md text-on-surface-variant opacity-60 line-clamp-1 mb-2">Sarah Jenkins</p>
+<div class="mt-auto flex items-center justify-between">
+<span class="font-body-md text-body-md text-primary font-medium">$38.50</span>
+<button aria-label="Add to cart" class="w-8 h-8 rounded-full border border-primary flex items-center justify-center text-primary hover:bg-primary hover:text-on-primary transition-colors">
+<span class="material-symbols-outlined text-[18px]" data-icon="add">add</span>
+</button>
+</div>
+</div>
+</article>
+<!-- Book Card 4 -->
+<article class="flex flex-col group cursor-pointer h-full">
+<div class="relative aspect-[2/3] w-full mb-3 overflow-hidden bg-surface-container-low book-cover-image">
+<img alt="Book Cover" class="w-full h-full object-cover transition-transform duration-500 group-hover:scale-105" data-alt="A stunning photography monograph cover featuring a high-contrast black and white landscape of rolling hills, framed by a thick white border. The design is impeccably clean, utilizing aggressive white space. Photographed straight-on under diffuse, soft lighting to emphasize the pristine quality of the publication. Premium editorial aesthetic." src="https://lh3.googleusercontent.com/aida-public/AB6AXuCV7KnZdoHQNt3IOOxLgtyAjDO1m6Q0m_lP5qDyQpyPwsiszIYzxNu0uW9E0CdwnnzrnAUCjqIZnBoSmiFXxHDum5oIW4pBCq9eFHd7t7zz1yrUf5Jjug_QF1DqYfOVWU2Jue4Vj0AZw0kK79CadNPZZ7SajrdFToRI6_XLxPX0-dXxA54BAJKBL89qMm32rf5i0SMHos29o8S4R75qYLKvXf8GIvm3oeW2_h9PFfE79i_tqhPPNKomIg"/>
+<div class="absolute top-2 left-2 bg-surface-container-lowest border border-outline-variant px-2 py-1 text-[10px] font-label-sm uppercase tracking-wider text-primary">
+                        Available
+                    </div>
+</div>
+<div class="flex flex-col flex-grow">
+<h3 class="font-headline-sm text-headline-sm text-on-background line-clamp-2 leading-tight mb-1">Silent Landscapes</h3>
+<p class="font-body-md text-body-md text-on-surface-variant opacity-60 line-clamp-1 mb-2">David O'Connor</p>
+<div class="mt-auto flex items-center justify-between">
+<span class="font-body-md text-body-md text-primary font-medium">$85.00</span>
+<button aria-label="Add to cart" class="w-8 h-8 rounded-full border border-primary flex items-center justify-center text-primary hover:bg-primary hover:text-on-primary transition-colors">
+<span class="material-symbols-outlined text-[18px]" data-icon="add">add</span>
+</button>
+</div>
+</div>
+</article>
+<!-- Book Card 5 -->
+<article class="flex flex-col group cursor-pointer h-full">
+<div class="relative aspect-[2/3] w-full mb-3 overflow-hidden bg-surface-container-low book-cover-image">
+<img alt="Book Cover" class="w-full h-full object-cover transition-transform duration-500 group-hover:scale-105" data-alt="A minimalist book cover featuring a single, delicate line drawing of a chair on a soft, warm paper background. The typography is understated and elegant, placed asymmetrically. The scene is lit to capture the tactile quality of the paper stock, evoking a sense of calm, focused reading in a high-end bookstore." src="https://lh3.googleusercontent.com/aida-public/AB6AXuC-0_OkSaesQHMDDsH05IITh82bAW2KGsowK-XfrUg5dH6trV906QkLsLsO-2kkRXPTuU2INMLSyjDRpEPJXSPS6HsmyBZHPVOPZhPEm5Ek62U_11wVx-DWjZXzbhvDhLQ_h8VYfg0yQ8bZ0Q6kiCURepTxvxAkOpX-rNpD5G403q1F-UhCuzsKSfMai9jY0sd8r2fjzZ4Bri2TNx82RQCePxhPRum3kAZfL4bXBNk_3CxNozfKi2JYGA"/>
+<div class="absolute top-2 left-2 bg-primary text-on-primary px-2 py-1 text-[10px] font-label-sm uppercase tracking-wider">
+                        Pre-Order
+                    </div>
+</div>
+<div class="flex flex-col flex-grow">
+<h3 class="font-headline-sm text-headline-sm text-on-background line-clamp-2 leading-tight mb-1">The Object in Room</h3>
+<p class="font-body-md text-body-md text-on-surface-variant opacity-60 line-clamp-1 mb-2">Li Wei</p>
+<div class="mt-auto flex items-center justify-between">
+<span class="font-body-md text-body-md text-primary font-medium">$55.00</span>
+<button aria-label="Add to cart" class="w-8 h-8 rounded-full border border-primary flex items-center justify-center text-primary hover:bg-primary hover:text-on-primary transition-colors">
+<span class="material-symbols-outlined text-[18px]" data-icon="add">add</span>
+</button>
+</div>
+</div>
+</article>
+<!-- Book Card 6 -->
+<article class="flex flex-col group cursor-pointer h-full">
+<div class="relative aspect-[2/3] w-full mb-3 overflow-hidden bg-surface-container-low book-cover-image">
+<img alt="Book Cover" class="w-full h-full object-cover transition-transform duration-500 group-hover:scale-105" data-alt="A bold, high-impact book cover showing a close-up texture of raw canvas painted with thick, deep navy strokes. The text is sharp white sans-serif, positioned at the very bottom edge. The photograph highlights the three-dimensionality of the paint texture against the flat, crisp edges of the book. Modern, sophisticated art context." src="https://lh3.googleusercontent.com/aida-public/AB6AXuC3oHgaRgFwkJxvNn-M3fw7bgF60pSyU6-AUSy3TkZa-3T6ejMg3Xw4nZNUL0qlU3oXM8p34M1g03NyDO-wO_BdvXWSh0G1LivIsZyne7KesmZRa-PuNc5ZJ3rY43MCPC6GskzqA2A-PW1Ixtp31msIVze9chHx-Fa8Didwid6tFFL7yk8u09SpdF3CANbT32jK9Ang4YIoG1eRYL845gw9jpeLTz9tUCF7BhMVxYlX9qAwXjVm4NMCrg"/>
+<div class="absolute top-2 left-2 bg-surface-container-lowest border border-outline-variant px-2 py-1 text-[10px] font-label-sm uppercase tracking-wider text-primary">
+                        Available
+                    </div>
+</div>
+<div class="flex flex-col flex-grow">
+<h3 class="font-headline-sm text-headline-sm text-on-background line-clamp-2 leading-tight mb-1">Materiality in Paint</h3>
+<p class="font-body-md text-body-md text-on-surface-variant opacity-60 line-clamp-1 mb-2">Anna Kowalski</p>
+<div class="mt-auto flex items-center justify-between">
+<span class="font-body-md text-body-md text-primary font-medium">$42.00</span>
+<button aria-label="Add to cart" class="w-8 h-8 rounded-full border border-primary flex items-center justify-center text-primary hover:bg-primary hover:text-on-primary transition-colors">
+<span class="material-symbols-outlined text-[18px]" data-icon="add">add</span>
+</button>
+</div>
+</div>
+</article>
+</section>
+<!-- Load More -->
+<div class="flex justify-center mt-stack-md pb-stack-lg">
+<button class="btn-secondary px-6 py-3 font-label-md text-label-md rounded-none transition-colors hover:bg-surface-container-high w-full md:w-auto">
+                Load More Titles
+            </button>
+</div>
+</main>
+<!-- BottomNavBar -->
+<nav class="bg-surface dark:bg-surface-dim fixed bottom-0 w-full z-50 flex justify-around items-center h-16 pb-safe md:hidden md:border-none border-t border-outline-variant dark:border-on-surface-variant shadow-none">
+<button class="flex flex-col items-center justify-center text-on-surface-variant dark:text-on-surface-variant opacity-70 hover:text-primary dark:hover:text-inverse-primary active:scale-95 transition-transform w-full h-full gap-1">
+<span class="material-symbols-outlined" data-icon="home">home</span>
+<span class="font-label-sm text-label-sm">Home</span>
+</button>
+<button class="flex flex-col items-center justify-center text-primary dark:text-inverse-primary font-bold hover:text-primary dark:hover:text-inverse-primary active:scale-95 transition-transform w-full h-full gap-1">
+<span class="material-symbols-outlined fill" data-icon="menu_book" data-weight="fill">menu_book</span>
+<span class="font-label-sm text-label-sm">Catalog</span>
+</button>
+<button class="flex flex-col items-center justify-center text-on-surface-variant dark:text-on-surface-variant opacity-70 hover:text-primary dark:hover:text-inverse-primary active:scale-95 transition-transform w-full h-full gap-1">
+<span class="material-symbols-outlined" data-icon="favorite">favorite</span>
+<span class="font-label-sm text-label-sm">Wishlist</span>
+</button>
+<button class="flex flex-col items-center justify-center text-on-surface-variant dark:text-on-surface-variant opacity-70 hover:text-primary dark:hover:text-inverse-primary active:scale-95 transition-transform w-full h-full gap-1 relative">
+<span class="material-symbols-outlined" data-icon="shopping_bag">shopping_bag</span>
+<span class="font-label-sm text-label-sm">Cart</span>
+<span class="absolute top-2 right-1/4 translate-x-2 w-2 h-2 bg-primary rounded-full"></span>
+</button>
+<button class="flex flex-col items-center justify-center text-on-surface-variant dark:text-on-surface-variant opacity-70 hover:text-primary dark:hover:text-inverse-primary active:scale-95 transition-transform w-full h-full gap-1">
+<span class="material-symbols-outlined" data-icon="person">person</span>
+<span class="font-label-sm text-label-sm">Account</span>
+</button>
+</nav>
+<!-- Desktop Navigation Cluster (Hidden on mobile) -->
+<nav class="hidden md:flex fixed top-0 right-margin-desktop h-16 items-center gap-8 z-50">
+<a class="font-label-md text-label-md text-on-surface-variant hover:text-primary transition-colors" href="#">Home</a>
+<a class="font-label-md text-label-md text-primary font-bold border-b-2 border-primary pb-1" href="#">Catalog</a>
+<a class="font-label-md text-label-md text-on-surface-variant hover:text-primary transition-colors" href="#">Wishlist</a>
+<a class="font-label-md text-label-md text-on-surface-variant hover:text-primary transition-colors" href="#">Account</a>
+</nav>
+</body></html>

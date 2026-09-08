@@ -1,0 +1,119 @@
+{
+  "name": "AlloBook - Scheduled Book Sync from Open Library",
+  "nodes": [
+    {
+      "parameters": {
+        "rule": {
+          "interval": [
+            {
+              "field": "weeks",
+              "triggerAtHour": 9,
+              "triggerAtMinute": 0
+            }
+          ]
+        }
+      },
+      "name": "Weekly Schedule",
+      "type": "n8n-nodes-base.scheduleTrigger",
+      "typeVersion": 1,
+      "position": [
+        200,
+        300
+      ]
+    },
+    {
+      "parameters": {
+        "url": "https://openlibrary.org/subjects/literature.json?limit=10",
+        "options": {}
+      },
+      "name": "Fetch Open Library Literature",
+      "type": "n8n-nodes-base.httpRequest",
+      "typeVersion": 3,
+      "position": [
+        400,
+        300
+      ]
+    },
+    {
+      "parameters": {
+        "jsCode": "const works = $input.first().json.works || [];\nconst suggestions = works.map(w => ({\n  title: w.title,\n  author: w.authors && w.authors[0] ? w.authors[0].name : 'Unknown Author',\n  coverUrl: w.cover_id ? `https://covers.openlibrary.org/b/id/${w.cover_id}-L.jpg` : null,\n  description: `Karya literatur populer persembahan ${w.authors && w.authors[0] ? w.authors[0].name : 'penulis'}. Memperkaya wawasan dan imajinasi pembaca.`,\n  price: 98000,\n  categories: ['Literature', 'Fiction']\n}));\n\nreturn [{ json: { books: suggestions } }];"
+      },
+      "name": "Transform Suggestions",
+      "type": "n8n-nodes-base.code",
+      "typeVersion": 1,
+      "position": [
+        600,
+        300
+      ]
+    },
+    {
+      "parameters": {
+        "method": "POST",
+        "url": "http://host.docker.internal:3001/admin/books/import-suggestions",
+        "sendHeaders": true,
+        "headerParameters": {
+          "parameters": [
+            {
+              "name": "X-Webhook-Secret",
+              "value": "={{$env.N8N_WEBHOOK_SECRET || 'allobook_n8n_secret_2026'}}"
+            },
+            {
+              "name": "Content-Type",
+              "value": "application/json"
+            }
+          ]
+        },
+        "sendBody": true,
+        "bodyParameters": {
+          "parameters": []
+        },
+        "jsonBody": "={{JSON.stringify($json)}}",
+        "options": {}
+      },
+      "name": "Send to Backend Curation Queue",
+      "type": "n8n-nodes-base.httpRequest",
+      "typeVersion": 3,
+      "position": [
+        800,
+        300
+      ]
+    }
+  ],
+  "connections": {
+    "Weekly Schedule": {
+      "main": [
+        [
+          {
+            "node": "Fetch Open Library Literature",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Fetch Open Library Literature": {
+      "main": [
+        [
+          {
+            "node": "Transform Suggestions",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Transform Suggestions": {
+      "main": [
+        [
+          {
+            "node": "Send to Backend Curation Queue",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    }
+  },
+  "active": true,
+  "settings": {}
+}

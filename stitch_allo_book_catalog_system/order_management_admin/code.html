@@ -1,0 +1,342 @@
+<!DOCTYPE html>
+
+<html class="light" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Allo Book - Order Management</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Libre+Caslon+Text:ital,wght@0,400;0,700;1,400&amp;family=Hanken+Grotesk:wght@400;500;600;700&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+        tailwind.config = {
+          darkMode: "class",
+          theme: {
+            extend: {
+              "colors": {
+                      "inverse-primary": "#adcdc7",
+                      "primary-fixed": "#c8e9e3",
+                      "error-container": "#ffdad6",
+                      "surface-tint": "#46645f",
+                      "outline-variant": "#c1c8c6",
+                      "surface": "#faf9f7",
+                      "primary-fixed-dim": "#adcdc7",
+                      "tertiary-fixed": "#ffdbd0",
+                      "secondary": "#735c00",
+                      "surface-container-lowest": "#ffffff",
+                      "inverse-surface": "#2f3130",
+                      "on-tertiary-fixed": "#2e150c",
+                      "error": "#ba1a1a",
+                      "secondary-fixed": "#ffe088",
+                      "surface-container-highest": "#e3e2e0",
+                      "surface-dim": "#dadad8",
+                      "surface-container": "#efeeec",
+                      "on-background": "#1a1c1b",
+                      "inverse-on-surface": "#f1f1ef",
+                      "on-primary": "#ffffff",
+                      "on-error": "#ffffff",
+                      "on-tertiary-fixed-variant": "#603f34",
+                      "surface-container-high": "#e9e8e6",
+                      "primary": "#001915",
+                      "on-secondary-fixed": "#241a00",
+                      "background": "#faf9f7",
+                      "surface-bright": "#faf9f7",
+                      "surface-container-low": "#f4f3f1",
+                      "on-secondary-container": "#745c00",
+                      "on-surface": "#1a1c1b",
+                      "tertiary-container": "#3e2219",
+                      "surface-variant": "#e3e2e0",
+                      "on-primary-container": "#779691",
+                      "on-tertiary": "#ffffff",
+                      "tertiary-fixed-dim": "#ebbcae",
+                      "tertiary": "#260e07",
+                      "on-tertiary-container": "#b1877a",
+                      "on-primary-fixed": "#00201c",
+                      "on-surface-variant": "#414847",
+                      "on-secondary-fixed-variant": "#574500",
+                      "primary-container": "#0f2e2a",
+                      "on-secondary": "#ffffff",
+                      "secondary-container": "#fed65b",
+                      "on-primary-fixed-variant": "#2e4c48",
+                      "on-error-container": "#93000a",
+                      "outline": "#717977",
+                      "secondary-fixed-dim": "#e9c349"
+              },
+              "borderRadius": {
+                      "DEFAULT": "0.125rem",
+                      "lg": "0.25rem",
+                      "xl": "0.5rem",
+                      "full": "0.75rem"
+              },
+              "spacing": {
+                      "container-max": "1280px",
+                      "base": "8px",
+                      "stack-md": "24px",
+                      "stack-sm": "12px",
+                      "stack-lg": "48px",
+                      "gutter": "24px",
+                      "margin-mobile": "20px",
+                      "margin-desktop": "64px"
+              },
+              "fontFamily": {
+                      "headline-md": [
+                              "Libre Caslon Text"
+                      ],
+                      "body-md": [
+                              "Hanken Grotesk"
+                      ],
+                      "label-sm": [
+                              "Hanken Grotesk"
+                      ],
+                      "label-md": [
+                              "Hanken Grotesk"
+                      ],
+                      "display-lg": [
+                              "Libre Caslon Text"
+                      ],
+                      "display-lg-mobile": [
+                              "Libre Caslon Text"
+                      ],
+                      "body-lg": [
+                              "Hanken Grotesk"
+                      ],
+                      "headline-sm": [
+                              "Libre Caslon Text"
+                      ]
+              },
+              "fontSize": {
+                      "headline-md": [
+                              "32px",
+                              {
+                                      "lineHeight": "40px",
+                                      "fontWeight": "400"
+                              }
+                      ],
+                      "body-md": [
+                              "16px",
+                              {
+                                      "lineHeight": "24px",
+                                      "fontWeight": "400"
+                              }
+                      ],
+                      "label-sm": [
+                              "12px",
+                              {
+                                      "lineHeight": "16px",
+                                      "fontWeight": "500"
+                              }
+                      ],
+                      "label-md": [
+                              "14px",
+                              {
+                                      "lineHeight": "20px",
+                                      "letterSpacing": "0.05em",
+                                      "fontWeight": "600"
+                              }
+                      ],
+                      "display-lg": [
+                              "48px",
+                              {
+                                      "lineHeight": "56px",
+                                      "letterSpacing": "-0.02em",
+                                      "fontWeight": "700"
+                              }
+                      ],
+                      "display-lg-mobile": [
+                              "32px",
+                              {
+                                      "lineHeight": "40px",
+                                      "letterSpacing": "-0.01em",
+                                      "fontWeight": "700"
+                              }
+                      ],
+                      "body-lg": [
+                              "18px",
+                              {
+                                      "lineHeight": "28px",
+                                      "fontWeight": "400"
+                              }
+                      ],
+                      "headline-sm": [
+                              "24px",
+                              {
+                                      "lineHeight": "32px",
+                                      "fontWeight": "600"
+                              }
+                      ]
+              }
+      },
+          },
+        }
+      </script>
+<style>
+        .material-symbols-outlined {
+            font-family: 'Material Symbols Outlined';
+            font-weight: normal;
+            font-style: normal;
+            font-size: 24px;
+            line-height: 1;
+            letter-spacing: normal;
+            text-transform: none;
+            display: inline-block;
+            white-space: nowrap;
+            word-wrap: normal;
+            direction: ltr;
+            -webkit-font-feature-settings: 'liga';
+            -webkit-font-smoothing: antialiased;
+        }
+        
+        /* Ghost Border for Surface Level 1 */
+        .surface-ghost-border {
+            border: 1px solid #E5E5E1;
+        }
+
+        /* Hide scrollbar for clean horizontal scrolling */
+        .no-scrollbar::-webkit-scrollbar {
+            display: none;
+        }
+        .no-scrollbar {
+            -ms-overflow-style: none;
+            scrollbar-width: none;
+        }
+    </style>
+<style>
+    body {
+      min-height: max(884px, 100dvh);
+    }
+  </style>
+  </head>
+<body class="bg-background text-on-background font-body-md min-h-screen flex flex-col antialiased">
+<!-- TopAppBar -->
+<header class="bg-surface dark:bg-surface-dim sticky top-0 w-full z-50 border-b border-outline-variant dark:border-on-surface-variant">
+<div class="flex items-center justify-between px-margin-mobile md:px-margin-desktop h-16 w-full">
+<button aria-label="Menu" class="text-on-surface-variant dark:text-on-surface-variant hover:bg-surface-container-high dark:hover:bg-surface-container-highest transition-colors p-2 rounded-full active:opacity-80 transition-opacity">
+<span class="material-symbols-outlined" data-icon="menu">menu</span>
+</button>
+<h1 class="font-headline-md text-headline-md text-primary dark:text-inverse-primary tracking-tight">Allo Book</h1>
+<button aria-label="Cart" class="text-on-surface-variant dark:text-on-surface-variant hover:bg-surface-container-high dark:hover:bg-surface-container-highest transition-colors p-2 rounded-full active:opacity-80 transition-opacity">
+<span class="material-symbols-outlined" data-icon="shopping_cart">shopping_cart</span>
+</button>
+</div>
+</header>
+<!-- Main Content Canvas -->
+<main class="flex-grow px-margin-mobile md:px-margin-desktop py-stack-md flex flex-col gap-stack-md pb-32">
+<!-- Page Header & Search -->
+<section class="flex flex-col gap-stack-sm">
+<h2 class="font-headline-sm text-headline-sm text-primary">Orders</h2>
+<div class="flex flex-col md:flex-row gap-stack-sm items-start md:items-center">
+<div class="relative w-full md:w-auto flex-grow">
+<span class="material-symbols-outlined absolute left-3 top-1/2 -translate-y-1/2 text-on-surface-variant pointer-events-none" data-icon="search">search</span>
+<input class="w-full pl-10 pr-4 py-3 bg-surface-container-lowest surface-ghost-border rounded-DEFAULT focus:outline-none focus:border-primary focus:ring-1 focus:ring-primary font-body-md text-on-surface transition-all placeholder:text-on-surface-variant/60" placeholder="Search orders..." type="text"/>
+</div>
+<button class="flex items-center gap-2 px-4 py-3 bg-surface-container-lowest surface-ghost-border rounded-DEFAULT text-on-surface hover:bg-surface-container-low transition-colors w-full md:w-auto justify-center">
+<span class="material-symbols-outlined" data-icon="filter_list">filter_list</span>
+<span class="font-label-md text-label-md">Filters</span>
+</button>
+</div>
+</section>
+<!-- Orders List -->
+<section class="flex flex-col gap-stack-sm">
+<!-- Order Card 1 -->
+<div class="bg-surface-container-lowest surface-ghost-border rounded-lg p-4 flex flex-col gap-stack-sm">
+<div class="flex justify-between items-start">
+<div>
+<div class="font-label-md text-label-md text-primary">#ORD-2409A</div>
+<div class="font-body-md text-body-md text-on-surface">Eleanor Vance</div>
+</div>
+<div class="text-right">
+<div class="font-label-md text-label-md text-primary">$142.50</div>
+<div class="font-label-sm text-label-sm text-on-surface-variant">Oct 12, 2024</div>
+</div>
+</div>
+<div class="flex justify-between items-center pt-2 border-t border-surface-variant">
+<select class="bg-surface-container font-label-sm text-label-sm text-on-surface border-none rounded py-1 pl-2 pr-6 focus:ring-0 appearance-none cursor-pointer">
+<option selected="" value="waiting">Waiting Confirmation</option>
+<option value="processing">PO Processing</option>
+<option value="shipped">Shipped</option>
+<option value="completed">Completed</option>
+<option value="cancelled">Cancelled</option>
+</select>
+<button class="font-label-md text-label-md text-primary hover:text-primary-container transition-colors flex items-center gap-1">
+                        View Detail <span class="material-symbols-outlined" data-icon="chevron_right" style="font-size: 16px;">chevron_right</span>
+</button>
+</div>
+</div>
+<!-- Order Card 2 -->
+<div class="bg-surface-container-lowest surface-ghost-border rounded-lg p-4 flex flex-col gap-stack-sm">
+<div class="flex justify-between items-start">
+<div>
+<div class="font-label-md text-label-md text-primary">#ORD-2408B</div>
+<div class="font-body-md text-body-md text-on-surface">Arthur Pendelton</div>
+</div>
+<div class="text-right">
+<div class="font-label-md text-label-md text-primary">$85.00</div>
+<div class="font-label-sm text-label-sm text-on-surface-variant">Oct 11, 2024</div>
+</div>
+</div>
+<div class="flex justify-between items-center pt-2 border-t border-surface-variant">
+<select class="bg-primary-fixed font-label-sm text-label-sm text-on-primary-fixed border-none rounded py-1 pl-2 pr-6 focus:ring-0 appearance-none cursor-pointer">
+<option value="waiting">Waiting Confirmation</option>
+<option selected="" value="processing">PO Processing</option>
+<option value="shipped">Shipped</option>
+<option value="completed">Completed</option>
+<option value="cancelled">Cancelled</option>
+</select>
+<button class="font-label-md text-label-md text-primary hover:text-primary-container transition-colors flex items-center gap-1">
+                        View Detail <span class="material-symbols-outlined" data-icon="chevron_right" style="font-size: 16px;">chevron_right</span>
+</button>
+</div>
+</div>
+<!-- Order Card 3 -->
+<div class="bg-surface-container-lowest surface-ghost-border rounded-lg p-4 flex flex-col gap-stack-sm opacity-70">
+<div class="flex justify-between items-start">
+<div>
+<div class="font-label-md text-label-md text-primary">#ORD-2407C</div>
+<div class="font-body-md text-body-md text-on-surface">Margaret Hale</div>
+</div>
+<div class="text-right">
+<div class="font-label-md text-label-md text-primary">$210.00</div>
+<div class="font-label-sm text-label-sm text-on-surface-variant">Oct 10, 2024</div>
+</div>
+</div>
+<div class="flex justify-between items-center pt-2 border-t border-surface-variant">
+<select class="bg-surface-variant font-label-sm text-label-sm text-on-surface-variant border-none rounded py-1 pl-2 pr-6 focus:ring-0 appearance-none cursor-pointer" disabled="">
+<option value="waiting">Waiting Confirmation</option>
+<option value="processing">PO Processing</option>
+<option value="shipped">Shipped</option>
+<option selected="" value="completed">Completed</option>
+<option value="cancelled">Cancelled</option>
+</select>
+<button class="font-label-md text-label-md text-primary hover:text-primary-container transition-colors flex items-center gap-1">
+                        View Detail <span class="material-symbols-outlined" data-icon="chevron_right" style="font-size: 16px;">chevron_right</span>
+</button>
+</div>
+</div>
+</section>
+</main>
+<!-- BottomNavBar (Hidden on desktop due to semantic logic, but rendered as requested for mobile context) -->
+<nav class="bg-surface dark:bg-surface-dim fixed bottom-0 w-full z-50 border-t border-outline-variant dark:border-on-surface-variant md:hidden">
+<div class="flex justify-around items-center h-16 w-full pb-safe">
+<a aria-label="Home" class="flex flex-col items-center justify-center text-on-surface-variant dark:text-on-surface-variant opacity-70 hover:text-primary dark:hover:text-inverse-primary active:scale-95 transition-transform" href="#">
+<span class="material-symbols-outlined mb-1" data-icon="home">home</span>
+<span class="font-label-sm text-label-sm">Home</span>
+</a>
+<a aria-label="Catalog" class="flex flex-col items-center justify-center text-on-surface-variant dark:text-on-surface-variant opacity-70 hover:text-primary dark:hover:text-inverse-primary active:scale-95 transition-transform" href="#">
+<span class="material-symbols-outlined mb-1" data-icon="menu_book">menu_book</span>
+<span class="font-label-sm text-label-sm">Catalog</span>
+</a>
+<a aria-label="Wishlist" class="flex flex-col items-center justify-center text-on-surface-variant dark:text-on-surface-variant opacity-70 hover:text-primary dark:hover:text-inverse-primary active:scale-95 transition-transform" href="#">
+<span class="material-symbols-outlined mb-1" data-icon="favorite">favorite</span>
+<span class="font-label-sm text-label-sm">Wishlist</span>
+</a>
+<a aria-label="Cart" class="flex flex-col items-center justify-center text-on-surface-variant dark:text-on-surface-variant opacity-70 hover:text-primary dark:hover:text-inverse-primary active:scale-95 transition-transform" href="#">
+<span class="material-symbols-outlined mb-1" data-icon="shopping_bag">shopping_bag</span>
+<span class="font-label-sm text-label-sm">Cart</span>
+</a>
+<a aria-label="Account" class="flex flex-col items-center justify-center text-primary dark:text-inverse-primary font-bold hover:text-primary dark:hover:text-inverse-primary active:scale-95 transition-transform" href="#">
+<span class="material-symbols-outlined mb-1" data-icon="person" data-weight="fill" style="font-variation-settings: 'FILL' 1;">person</span>
+<span class="font-label-sm text-label-sm">Account</span>
+</a>
+</div>
+</nav>
+</body></html>

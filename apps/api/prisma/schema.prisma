@@ -1,0 +1,206 @@
+// This is your Prisma schema file,
+// learn more about it in the docs: https://pris.ly/d/prisma-schema
+
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "postgresql"
+  url      = env("DATABASE_URL")
+}
+
+// ─── Enums ───────────────────────────────────────────────────────────────────
+
+enum Role {
+  USER
+  ADMIN
+}
+
+enum OrderStatus {
+  PENDING
+  PROCESSING
+  CONFIRMED
+  SHIPPED
+  DONE
+  CANCELLED
+}
+
+// ─── User ────────────────────────────────────────────────────────────────────
+
+model User {
+  id           String   @id @default(cuid())
+  email        String   @unique
+  name         String
+  passwordHash String
+  role         Role     @default(USER)
+  createdAt    DateTime @default(now())
+  updatedAt    DateTime @updatedAt
+
+  reviews   Review[]
+  wishlist  Wishlist[]
+  orders    Order[]
+
+  @@map("users")
+}
+
+// ─── Book ─────────────────────────────────────────────────────────────────────
+
+model Book {
+  id          String    @id @default(cuid())
+  slug        String    @unique
+  title       String
+  author      String
+  isbn        String?   @unique
+  description String
+  coverUrl    String?
+  price       Decimal   @db.Decimal(10, 2)
+  stock       Int       @default(0)
+  isPreOrder  Boolean   @default(false)
+  publishedAt            DateTime?
+  reviewSummaryCache     String?
+  reviewSummaryUpdatedAt DateTime?
+  embedding              Unsupported("vector(1536)")?
+  createdAt              DateTime  @default(now())
+  updatedAt   DateTime  @updatedAt
+
+  categories  BookCategory[]
+  reviews     Review[]
+  wishlist    Wishlist[]
+  orderItems  OrderItem[]
+
+  @@map("books")
+}
+
+// ─── Category ─────────────────────────────────────────────────────────────────
+
+model Category {
+  id   String @id @default(cuid())
+  name String
+  slug String @unique
+
+  books BookCategory[]
+
+  @@map("categories")
+}
+
+// ─── BookCategory (junction) ──────────────────────────────────────────────────
+
+model BookCategory {
+  bookId     String
+  categoryId String
+
+  book     Book     @relation(fields: [bookId], references: [id], onDelete: Cascade)
+  category Category @relation(fields: [categoryId], references: [id], onDelete: Cascade)
+
+  @@unique([bookId, categoryId])
+  @@map("book_categories")
+}
+
+// ─── Review ───────────────────────────────────────────────────────────────────
+
+model Review {
+  id        String   @id @default(cuid())
+  userId    String
+  bookId    String
+  rating    Int
+  body      String
+  imageUrls String[]
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+
+  user User @relation(fields: [userId], references: [id], onDelete: Cascade)
+  book Book @relation(fields: [bookId], references: [id], onDelete: Cascade)
+
+  @@map("reviews")
+}
+
+// ─── Wishlist ─────────────────────────────────────────────────────────────────
+
+model Wishlist {
+  id        String   @id @default(cuid())
+  userId    String
+  bookId    String
+  createdAt DateTime @default(now())
+
+  user User @relation(fields: [userId], references: [id], onDelete: Cascade)
+  book Book @relation(fields: [bookId], references: [id], onDelete: Cascade)
+
+  @@unique([userId, bookId])
+  @@map("wishlists")
+}
+
+// ─── Order ────────────────────────────────────────────────────────────────────
+
+model Order {
+  id              String      @id @default(cuid())
+  userId          String?     // nullable: supports guest checkout
+  customerName    String
+  customerPhone   String      // WhatsApp number
+  customerEmail   String?
+  status          OrderStatus @default(PENDING)
+  totalAmount     Decimal     @db.Decimal(10, 2)
+  shippingAddress Json        // { address, city, state, postcode, notes? }
+  createdAt       DateTime    @default(now())
+  updatedAt       DateTime    @updatedAt
+
+  user  User?       @relation(fields: [userId], references: [id], onDelete: SetNull)
+  items OrderItem[]
+
+  @@map("orders")
+}
+
+// ─── OrderItem ────────────────────────────────────────────────────────────────
+
+model OrderItem {
+  id           String  @id @default(cuid())
+  orderId      String
+  bookId       String
+  quantity     Int
+  priceAtOrder Decimal @db.Decimal(10, 2)
+
+  order Order @relation(fields: [orderId], references: [id], onDelete: Cascade)
+  book  Book  @relation(fields: [bookId], references: [id])
+
+  @@map("order_items")
+}
+
+// ─── StoreSettings ────────────────────────────────────────────────────────────
+
+model StoreSettings {
+  key       String   @id
+  value     String
+  updatedAt DateTime @updatedAt
+
+  @@map("store_settings")
+}
+
+// ─── AI Usage Log ─────────────────────────────────────────────────────────────
+
+model AiUsageLog {
+  id               String   @id @default(cuid())
+  endpoint         String
+  model            String
+  promptTokens     Int      @default(0)
+  completionTokens Int      @default(0)
+  tokensUsed       Int      @default(0)
+  estimatedCost    Decimal  @default(0) @db.Decimal(10, 6)
+  createdAt        DateTime @default(now())
+
+  @@map("ai_usage_logs")
+}
+
+// ─── FAQ Entry (Knowledge Base) ──────────────────────────────────────────────
+
+model FaqEntry {
+  id        String   @id @default(cuid())
+  question  String
+  answer    String
+  embedding Unsupported("vector(1536)")?
+  category  String   // "checkout", "shipping", "return", "general"
+  isActive  Boolean  @default(true)
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+
+  @@map("faq_entries")
+}

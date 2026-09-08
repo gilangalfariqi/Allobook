@@ -1,0 +1,413 @@
+<!DOCTYPE html>
+
+<html class="light" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Allo Book - Admin Dashboard</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Hanken+Grotesk:wght@400;500;600;700&amp;family=Libre+Caslon+Text:ital,wght@0,400;0,700;1,400&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+        tailwind.config = {
+          darkMode: "class",
+          theme: {
+            extend: {
+              "colors": {
+                      "inverse-primary": "#adcdc7",
+                      "primary-fixed": "#c8e9e3",
+                      "error-container": "#ffdad6",
+                      "surface-tint": "#46645f",
+                      "outline-variant": "#c1c8c6",
+                      "surface": "#faf9f7",
+                      "primary-fixed-dim": "#adcdc7",
+                      "tertiary-fixed": "#ffdbd0",
+                      "secondary": "#735c00",
+                      "surface-container-lowest": "#ffffff",
+                      "inverse-surface": "#2f3130",
+                      "on-tertiary-fixed": "#2e150c",
+                      "error": "#ba1a1a",
+                      "secondary-fixed": "#ffe088",
+                      "surface-container-highest": "#e3e2e0",
+                      "surface-dim": "#dadad8",
+                      "surface-container": "#efeeec",
+                      "on-background": "#1a1c1b",
+                      "inverse-on-surface": "#f1f1ef",
+                      "on-primary": "#ffffff",
+                      "on-error": "#ffffff",
+                      "on-tertiary-fixed-variant": "#603f34",
+                      "surface-container-high": "#e9e8e6",
+                      "primary": "#001915",
+                      "on-secondary-fixed": "#241a00",
+                      "background": "#faf9f7",
+                      "surface-bright": "#faf9f7",
+                      "surface-container-low": "#f4f3f1",
+                      "on-secondary-container": "#745c00",
+                      "on-surface": "#1a1c1b",
+                      "tertiary-container": "#3e2219",
+                      "surface-variant": "#e3e2e0",
+                      "on-primary-container": "#779691",
+                      "on-tertiary": "#ffffff",
+                      "tertiary-fixed-dim": "#ebbcae",
+                      "tertiary": "#260e07",
+                      "on-tertiary-container": "#b1877a",
+                      "on-primary-fixed": "#00201c",
+                      "on-surface-variant": "#414847",
+                      "on-secondary-fixed-variant": "#574500",
+                      "primary-container": "#0f2e2a",
+                      "on-secondary": "#ffffff",
+                      "secondary-container": "#fed65b",
+                      "on-primary-fixed-variant": "#2e4c48",
+                      "on-error-container": "#93000a",
+                      "outline": "#717977",
+                      "secondary-fixed-dim": "#e9c349"
+              },
+              "borderRadius": {
+                      "DEFAULT": "0.125rem",
+                      "lg": "0.25rem",
+                      "xl": "0.5rem",
+                      "full": "0.75rem"
+              },
+              "spacing": {
+                      "container-max": "1280px",
+                      "base": "8px",
+                      "stack-md": "24px",
+                      "stack-sm": "12px",
+                      "stack-lg": "48px",
+                      "gutter": "24px",
+                      "margin-mobile": "20px",
+                      "margin-desktop": "64px"
+              },
+              "fontFamily": {
+                      "headline-md": [
+                              "Libre Caslon Text"
+                      ],
+                      "body-md": [
+                              "Hanken Grotesk"
+                      ],
+                      "label-sm": [
+                              "Hanken Grotesk"
+                      ],
+                      "label-md": [
+                              "Hanken Grotesk"
+                      ],
+                      "display-lg": [
+                              "Libre Caslon Text"
+                      ],
+                      "display-lg-mobile": [
+                              "Libre Caslon Text"
+                      ],
+                      "body-lg": [
+                              "Hanken Grotesk"
+                      ],
+                      "headline-sm": [
+                              "Libre Caslon Text"
+                      ]
+              },
+              "fontSize": {
+                      "headline-md": [
+                              "32px",
+                              {
+                                      "lineHeight": "40px",
+                                      "fontWeight": "400"
+                              }
+                      ],
+                      "body-md": [
+                              "16px",
+                              {
+                                      "lineHeight": "24px",
+                                      "fontWeight": "400"
+                              }
+                      ],
+                      "label-sm": [
+                              "12px",
+                              {
+                                      "lineHeight": "16px",
+                                      "fontWeight": "500"
+                              }
+                      ],
+                      "label-md": [
+                              "14px",
+                              {
+                                      "lineHeight": "20px",
+                                      "letterSpacing": "0.05em",
+                                      "fontWeight": "600"
+                              }
+                      ],
+                      "display-lg": [
+                              "48px",
+                              {
+                                      "lineHeight": "56px",
+                                      "letterSpacing": "-0.02em",
+                                      "fontWeight": "700"
+                              }
+                      ],
+                      "display-lg-mobile": [
+                              "32px",
+                              {
+                                      "lineHeight": "40px",
+                                      "letterSpacing": "-0.01em",
+                                      "fontWeight": "700"
+                              }
+                      ],
+                      "body-lg": [
+                              "18px",
+                              {
+                                      "lineHeight": "28px",
+                                      "fontWeight": "400"
+                              }
+                      ],
+                      "headline-sm": [
+                              "24px",
+                              {
+                                      "lineHeight": "32px",
+                                      "fontWeight": "600"
+                              }
+                      ]
+              }
+      },
+          },
+        }
+      </script>
+<style>
+          .material-symbols-outlined {
+            font-variation-settings:
+            'FILL' 0,
+            'wght' 400,
+            'GRAD' 0,
+            'opsz' 24
+          }
+          .material-symbols-outlined.fill {
+            font-variation-settings: 'FILL' 1;
+          }
+          
+          /* Custom scrollbar for a cleaner look */
+          ::-webkit-scrollbar {
+            width: 4px;
+            height: 4px;
+          }
+          ::-webkit-scrollbar-track {
+            background: transparent;
+          }
+          ::-webkit-scrollbar-thumb {
+            background: #e3e2e0;
+            border-radius: 4px;
+          }
+          
+          /* Navigation Drawer Overlay Transition */
+          #drawer-overlay {
+              transition: opacity 0.3s ease;
+          }
+          #drawer {
+              transition: transform 0.3s ease;
+          }
+      </style>
+<style>
+    body {
+      min-height: max(884px, 100dvh);
+    }
+  </style>
+  </head>
+<body class="bg-background text-on-background min-h-screen flex flex-col font-body-md antialiased md:hidden">
+<!-- TopAppBar -->
+<header class="bg-surface dark:bg-surface-dim sticky top-0 w-full z-50 border-b border-outline-variant dark:border-on-surface-variant flex items-center justify-between px-margin-mobile h-16">
+<button class="text-primary dark:text-inverse-primary hover:bg-surface-container-high dark:hover:bg-surface-container-highest transition-colors active:opacity-80 p-2 -ml-2 rounded-full flex items-center justify-center" id="menu-btn">
+<span class="material-symbols-outlined" data-icon="menu">menu</span>
+</button>
+<h1 class="font-headline-md text-headline-md text-primary dark:text-inverse-primary tracking-tight">Allo Book</h1>
+<button class="text-primary dark:text-inverse-primary hover:bg-surface-container-high dark:hover:bg-surface-container-highest transition-colors active:opacity-80 p-2 -mr-2 rounded-full flex items-center justify-center">
+<span class="material-symbols-outlined" data-icon="shopping_cart">shopping_cart</span>
+</button>
+</header>
+<!-- Navigation Drawer (Hidden by default) -->
+<div class="fixed inset-0 bg-primary/20 backdrop-blur-sm z-[60] opacity-0 pointer-events-none transition-opacity" id="drawer-overlay"></div>
+<nav class="bg-surface-container dark:bg-surface-container-low h-full w-64 fixed left-0 top-0 border-r border-outline-variant dark:border-on-surface-variant flex flex-col p-stack-sm overflow-y-auto z-[70] -translate-x-full transition-transform" id="drawer">
+<!-- Header -->
+<div class="flex items-center gap-4 mb-stack-lg p-2 mt-4">
+<div class="w-12 h-12 rounded-full bg-surface-variant flex items-center justify-center overflow-hidden border border-outline-variant">
+<img alt="Admin Portrait" class="w-full h-full object-cover" data-alt="A professional headshot of a middle-aged administrative manager wearing a neat, dark grey blazer over a crisp white shirt, photographed against a bright, minimalist white background with soft, natural lighting indicating a modern office environment." src="https://lh3.googleusercontent.com/aida-public/AB6AXuAGQcBMqSQd9V4KP5aLSCZcktxJdXHv0ED-_Um4bHF4EbK09-KukwrOS4n7faAtyG9ftBpWnTk74c1-K-g89-3AzBLx3xQiXQqXQBE3LJzNVrcFWWNmp40MqvvM9nuxEKZ-dyYjd1nR4MUcB_ZNukgV2zt-sbviJZFh9RdvZo2q3rPk0_0Rm123GuHRtIRirvCYNUnlh-PlBPT7o6IwB7-FoQK3tvOKJM2ts6G6iwgl30OQKRLjy7l_4g"/>
+</div>
+<div>
+<h2 class="font-label-md text-label-md text-primary font-semibold">Admin Panel</h2>
+<p class="font-label-sm text-label-sm text-on-surface-variant">Allo Book Management</p>
+<p class="font-label-sm text-label-sm text-outline mt-1 text-[10px]">v1.0.4</p>
+</div>
+</div>
+<!-- Navigation Links -->
+<ul class="flex flex-col gap-2">
+<!-- Active Item: Dashboard -->
+<li>
+<a class="flex items-center gap-3 p-3 bg-primary-container dark:bg-primary-container text-on-primary-container dark:text-on-primary-container rounded-lg font-bold active:scale-[0.98] transition-transform" href="#">
+<span class="material-symbols-outlined fill" data-icon="dashboard">dashboard</span>
+<span class="font-label-md text-label-md">Dashboard</span>
+</a>
+</li>
+<li>
+<a class="flex items-center gap-3 p-3 text-on-surface-variant dark:text-on-surface-variant hover:bg-surface-variant dark:hover:bg-inverse-surface rounded-lg transition-all active:scale-[0.98]" href="#">
+<span class="material-symbols-outlined" data-icon="inventory_2">inventory_2</span>
+<span class="font-label-md text-label-md">Inventory</span>
+</a>
+</li>
+<li>
+<a class="flex items-center gap-3 p-3 text-on-surface-variant dark:text-on-surface-variant hover:bg-surface-variant dark:hover:bg-inverse-surface rounded-lg transition-all active:scale-[0.98]" href="#">
+<span class="material-symbols-outlined" data-icon="receipt_long">receipt_long</span>
+<span class="font-label-md text-label-md">Orders</span>
+</a>
+</li>
+<li>
+<a class="flex items-center gap-3 p-3 text-on-surface-variant dark:text-on-surface-variant hover:bg-surface-variant dark:hover:bg-inverse-surface rounded-lg transition-all active:scale-[0.98]" href="#">
+<span class="material-symbols-outlined" data-icon="group">group</span>
+<span class="font-label-md text-label-md">Customers</span>
+</a>
+</li>
+<li>
+<a class="flex items-center gap-3 p-3 text-on-surface-variant dark:text-on-surface-variant hover:bg-surface-variant dark:hover:bg-inverse-surface rounded-lg transition-all active:scale-[0.98]" href="#">
+<span class="material-symbols-outlined" data-icon="analytics">analytics</span>
+<span class="font-label-md text-label-md">Analytics</span>
+</a>
+</li>
+<li>
+<a class="flex items-center gap-3 p-3 text-on-surface-variant dark:text-on-surface-variant hover:bg-surface-variant dark:hover:bg-inverse-surface rounded-lg transition-all active:scale-[0.98]" href="#">
+<span class="material-symbols-outlined" data-icon="settings">settings</span>
+<span class="font-label-md text-label-md">Settings</span>
+</a>
+</li>
+</ul>
+<div class="mt-auto pt-stack-md border-t border-outline-variant">
+<button class="w-full flex items-center justify-center gap-2 p-3 text-on-surface-variant hover:bg-surface-variant rounded-lg transition-all" id="close-menu-btn">
+<span class="material-symbols-outlined" data-icon="close">close</span>
+<span class="font-label-md text-label-md">Close Menu</span>
+</button>
+</div>
+</nav>
+<!-- Main Content -->
+<main class="flex-1 px-margin-mobile py-stack-md flex flex-col gap-stack-lg">
+<!-- Header -->
+<section>
+<h2 class="font-headline-sm text-headline-sm text-primary mb-1">Overview</h2>
+<p class="font-body-md text-body-md text-on-surface-variant">Key metrics for today.</p>
+</section>
+<!-- Statistics Grid (Bento style) -->
+<section class="grid grid-cols-2 gap-4">
+<!-- Main Stat Card -->
+<div class="col-span-2 bg-surface-container-lowest border border-outline-variant rounded-xl p-5 flex flex-col justify-between min-h-[140px]">
+<div class="flex justify-between items-start">
+<span class="font-label-md text-label-md text-on-surface-variant uppercase tracking-wider">Total Revenue</span>
+<span class="material-symbols-outlined text-primary-container" data-icon="trending_up">trending_up</span>
+</div>
+<div>
+<div class="font-display-lg-mobile text-display-lg-mobile text-primary mt-2">$12,450</div>
+<div class="font-label-sm text-label-sm text-primary-container mt-1 bg-primary-fixed/30 inline-block px-2 py-0.5 rounded">+8.2% from yesterday</div>
+</div>
+</div>
+<!-- Minor Stat 1 -->
+<div class="bg-surface-container-lowest border border-outline-variant rounded-xl p-4 flex flex-col justify-between min-h-[120px]">
+<span class="font-label-md text-label-md text-on-surface-variant">Total Books</span>
+<div class="mt-2">
+<div class="font-headline-sm text-headline-sm text-primary">3,492</div>
+<div class="font-label-sm text-label-sm text-outline mt-1">in stock</div>
+</div>
+</div>
+<!-- Minor Stat 2 -->
+<div class="bg-surface-container-lowest border border-outline-variant rounded-xl p-4 flex flex-col justify-between min-h-[120px]">
+<span class="font-label-md text-label-md text-on-surface-variant">Pre-Orders</span>
+<div class="mt-2">
+<div class="font-headline-sm text-headline-sm text-primary">148</div>
+<div class="font-label-sm text-label-sm text-outline mt-1">active</div>
+</div>
+</div>
+<!-- Minor Stat 3 -->
+<div class="col-span-2 bg-surface-container-lowest border border-outline-variant rounded-xl p-4 flex items-center justify-between">
+<div>
+<span class="font-label-md text-label-md text-on-surface-variant">Total Orders (Today)</span>
+<div class="font-headline-sm text-headline-sm text-primary mt-1">84</div>
+</div>
+<div class="w-12 h-12 rounded-full bg-primary-fixed flex items-center justify-center text-on-primary-fixed">
+<span class="material-symbols-outlined" data-icon="local_shipping">local_shipping</span>
+</div>
+</div>
+</section>
+<!-- Recent Orders List -->
+<section class="flex flex-col gap-4">
+<div class="flex justify-between items-end border-b border-outline-variant pb-2">
+<h3 class="font-headline-sm text-headline-sm text-primary">Recent Orders</h3>
+<a class="font-label-md text-label-md text-primary-container hover:underline" href="#">View All</a>
+</div>
+<div class="flex flex-col gap-3">
+<!-- Order Item 1 -->
+<div class="bg-surface-container-lowest border border-outline-variant rounded-lg p-4 flex items-center justify-between">
+<div class="flex items-center gap-3">
+<div class="w-10 h-10 rounded bg-surface-variant flex items-center justify-center text-outline">
+<span class="material-symbols-outlined" data-icon="menu_book">menu_book</span>
+</div>
+<div>
+<div class="font-label-md text-label-md text-on-surface">#ORD-9921</div>
+<div class="font-label-sm text-label-sm text-on-surface-variant">The Modern Mind</div>
+</div>
+</div>
+<div class="text-right">
+<div class="font-label-md text-label-md text-primary">$45.00</div>
+<div class="font-label-sm text-label-sm text-primary-container">Processing</div>
+</div>
+</div>
+<!-- Order Item 2 -->
+<div class="bg-surface-container-lowest border border-outline-variant rounded-lg p-4 flex items-center justify-between">
+<div class="flex items-center gap-3">
+<div class="w-10 h-10 rounded bg-surface-variant flex items-center justify-center text-outline">
+<span class="material-symbols-outlined" data-icon="menu_book">menu_book</span>
+</div>
+<div>
+<div class="font-label-md text-label-md text-on-surface">#ORD-9920</div>
+<div class="font-label-sm text-label-sm text-on-surface-variant">Design Systems</div>
+</div>
+</div>
+<div class="text-right">
+<div class="font-label-md text-label-md text-primary">$68.00</div>
+<div class="font-label-sm text-label-sm text-outline">Shipped</div>
+</div>
+</div>
+<!-- Order Item 3 -->
+<div class="bg-surface-container-lowest border border-outline-variant rounded-lg p-4 flex items-center justify-between">
+<div class="flex items-center gap-3">
+<div class="w-10 h-10 rounded bg-surface-variant flex items-center justify-center text-outline">
+<span class="material-symbols-outlined" data-icon="menu_book">menu_book</span>
+</div>
+<div>
+<div class="font-label-md text-label-md text-on-surface">#ORD-9919</div>
+<div class="font-label-sm text-label-sm text-on-surface-variant">Typography Guide</div>
+</div>
+</div>
+<div class="text-right">
+<div class="font-label-md text-label-md text-primary">$32.50</div>
+<div class="font-label-sm text-label-sm text-outline">Delivered</div>
+</div>
+</div>
+</div>
+</section>
+</main>
+<!-- Drawer Logic -->
+<script>
+        document.addEventListener('DOMContentLoaded', () => {
+            const menuBtn = document.getElementById('menu-btn');
+            const closeBtn = document.getElementById('close-menu-btn');
+            const drawer = document.getElementById('drawer');
+            const overlay = document.getElementById('drawer-overlay');
+
+            function openDrawer() {
+                drawer.classList.remove('-translate-x-full');
+                overlay.classList.remove('opacity-0', 'pointer-events-none');
+                document.body.style.overflow = 'hidden'; // Prevent scrolling on main body
+            }
+
+            function closeDrawer() {
+                drawer.classList.add('-translate-x-full');
+                overlay.classList.add('opacity-0', 'pointer-events-none');
+                document.body.style.overflow = '';
+            }
+
+            menuBtn.addEventListener('click', openDrawer);
+            closeBtn.addEventListener('click', closeDrawer);
+            overlay.addEventListener('click', closeDrawer);
+        });
+    </script>
+</body></html>

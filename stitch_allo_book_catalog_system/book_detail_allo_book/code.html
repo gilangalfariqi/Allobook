@@ -1,0 +1,273 @@
+<!DOCTYPE html>
+
+<html class="light" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Allo Book - Book Detail</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Hanken+Grotesk:wght@400;500;600&amp;family=Libre+Caslon+Text:wght@400;700&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    "colors": {
+                        "inverse-primary": "#adcdc7",
+                        "primary-fixed": "#c8e9e3",
+                        "error-container": "#ffdad6",
+                        "surface-tint": "#46645f",
+                        "outline-variant": "#c1c8c6",
+                        "surface": "#faf9f7",
+                        "primary-fixed-dim": "#adcdc7",
+                        "tertiary-fixed": "#ffdbd0",
+                        "secondary": "#735c00",
+                        "surface-container-lowest": "#ffffff",
+                        "inverse-surface": "#2f3130",
+                        "on-tertiary-fixed": "#2e150c",
+                        "error": "#ba1a1a",
+                        "secondary-fixed": "#ffe088",
+                        "surface-container-highest": "#e3e2e0",
+                        "surface-dim": "#dadad8",
+                        "surface-container": "#efeeec",
+                        "on-background": "#1a1c1b",
+                        "inverse-on-surface": "#f1f1ef",
+                        "on-primary": "#ffffff",
+                        "on-error": "#ffffff",
+                        "on-tertiary-fixed-variant": "#603f34",
+                        "surface-container-high": "#e9e8e6",
+                        "primary": "#001915",
+                        "on-secondary-fixed": "#241a00",
+                        "background": "#faf9f7",
+                        "surface-bright": "#faf9f7",
+                        "surface-container-low": "#f4f3f1",
+                        "on-secondary-container": "#745c00",
+                        "on-surface": "#1a1c1b",
+                        "tertiary-container": "#3e2219",
+                        "surface-variant": "#e3e2e0",
+                        "on-primary-container": "#779691",
+                        "on-tertiary": "#ffffff",
+                        "tertiary-fixed-dim": "#ebbcae",
+                        "tertiary": "#260e07",
+                        "on-tertiary-container": "#b1877a",
+                        "on-primary-fixed": "#00201c",
+                        "on-surface-variant": "#414847",
+                        "on-secondary-fixed-variant": "#574500",
+                        "primary-container": "#0f2e2a",
+                        "on-secondary": "#ffffff",
+                        "secondary-container": "#fed65b",
+                        "on-primary-fixed-variant": "#2e4c48",
+                        "on-error-container": "#93000a",
+                        "outline": "#717977",
+                        "secondary-fixed-dim": "#e9c349"
+                    },
+                    "borderRadius": {
+                        "DEFAULT": "0.125rem",
+                        "lg": "0.25rem",
+                        "xl": "0.5rem",
+                        "full": "0.75rem"
+                    },
+                    "spacing": {
+                        "container-max": "1280px",
+                        "base": "8px",
+                        "stack-md": "24px",
+                        "stack-sm": "12px",
+                        "stack-lg": "48px",
+                        "gutter": "24px",
+                        "margin-mobile": "20px",
+                        "margin-desktop": "64px"
+                    },
+                    "fontFamily": {
+                        "headline-md": ["Libre Caslon Text"],
+                        "body-md": ["Hanken Grotesk"],
+                        "label-sm": ["Hanken Grotesk"],
+                        "label-md": ["Hanken Grotesk"],
+                        "display-lg": ["Libre Caslon Text"],
+                        "display-lg-mobile": ["Libre Caslon Text"],
+                        "body-lg": ["Hanken Grotesk"],
+                        "headline-sm": ["Libre Caslon Text"]
+                    },
+                    "fontSize": {
+                        "headline-md": ["32px", { "lineHeight": "40px", "fontWeight": "400" }],
+                        "body-md": ["16px", { "lineHeight": "24px", "fontWeight": "400" }],
+                        "label-sm": ["12px", { "lineHeight": "16px", "fontWeight": "500" }],
+                        "label-md": ["14px", { "lineHeight": "20px", "letterSpacing": "0.05em", "fontWeight": "600" }],
+                        "display-lg": ["48px", { "lineHeight": "56px", "letterSpacing": "-0.02em", "fontWeight": "700" }],
+                        "display-lg-mobile": ["32px", { "lineHeight": "40px", "letterSpacing": "-0.01em", "fontWeight": "700" }],
+                        "body-lg": ["18px", { "lineHeight": "28px", "fontWeight": "400" }],
+                        "headline-sm": ["24px", { "lineHeight": "32px", "fontWeight": "600" }]
+                    }
+                }
+            }
+        }
+    </script>
+<style>
+        .no-scrollbar::-webkit-scrollbar {
+            display: none;
+        }
+        .no-scrollbar {
+            -ms-overflow-style: none;
+            scrollbar-width: none;
+        }
+    </style>
+<style>
+    body {
+      min-height: max(884px, 100dvh);
+    }
+  </style>
+  </head>
+<body class="bg-background text-on-background font-body-md antialiased pb-24 md:pb-0">
+<!-- TopAppBar -->
+<header class="bg-surface dark:bg-surface-dim sticky top-0 w-full z-50 border-b border-outline-variant dark:border-on-surface-variant flex items-center justify-between px-margin-mobile md:px-margin-desktop h-16 w-full">
+<button aria-label="Go back" class="text-primary dark:text-inverse-primary hover:bg-surface-container-high dark:hover:bg-surface-container-highest transition-colors active:opacity-80 transition-opacity p-2 rounded-full">
+<span class="material-symbols-outlined" data-icon="arrow_back">arrow_back</span>
+</button>
+<div class="font-headline-sm text-headline-sm text-primary dark:text-inverse-primary tracking-tight">Allo Book</div>
+<button aria-label="Share" class="text-on-surface-variant dark:text-on-surface-variant hover:bg-surface-container-high dark:hover:bg-surface-container-highest transition-colors active:opacity-80 transition-opacity p-2 rounded-full">
+<span class="material-symbols-outlined" data-icon="share">share</span>
+</button>
+</header>
+<main class="max-w-container-max mx-auto md:px-margin-desktop md:py-stack-lg">
+<!-- Main Content Area -->
+<div class="md:grid md:grid-cols-12 md:gap-gutter">
+<!-- Image Column -->
+<div class="md:col-span-5 md:col-start-2 bg-surface-container-lowest p-margin-mobile md:p-stack-lg border-b md:border border-outline-variant md:rounded-lg md:shadow-sm">
+<div class="aspect-[2/3] relative rounded-lg overflow-hidden border border-outline-variant/50">
+<img class="w-full h-full object-cover" data-alt="A minimalist, high-resolution photograph of a modern editorial book cover resting on a pristine white surface. The cover design features abstract geometric shapes in muted Oxford Emerald and soft greys. The lighting is soft and natural, casting subtle shadows that highlight the paper's premium texture. The overall aesthetic is calm, intellectual, and sophisticated, perfectly aligned with a high-end digital bookstore." src="https://lh3.googleusercontent.com/aida-public/AB6AXuD0AHWoGS-zzfbcxtWSy92G145nemT1iBnPj-xKEP1PVPMuwyqCW5xStJmGKCIgiOK6BjbdRcewXSzrKUEXuymmUXmzCg0c_bHlzN-wSPp8PjWgzBZ0Fun1rVQ5IcQEOaMU4KJKVd3YrBcv1eaJBtxzy6MYdHyEsKRV9Zv71xtvAySCTW9ed0RMWcHyE8zaAVqvhl2-a98v2R-lJihDz90xMA81QUMDv8n1wP9Ftb37yHqcY6lotzU0Rw"/>
+</div>
+</div>
+<!-- Details Column -->
+<div class="md:col-span-5 p-margin-mobile md:p-0 flex flex-col gap-stack-md">
+<!-- Title & Author -->
+<div class="flex flex-col gap-base">
+<div class="flex items-center gap-2">
+<span class="bg-surface-variant text-on-surface-variant px-3 py-1 rounded-full font-label-sm text-label-sm">Art &amp; Design</span>
+<div class="flex items-center gap-1 text-secondary">
+<span class="material-symbols-outlined text-[16px]" data-icon="star" data-weight="fill" style="font-variation-settings: 'FILL' 1;">star</span>
+<span class="font-label-md text-label-md">4.8 (124 reviews)</span>
+</div>
+</div>
+<h1 class="font-display-lg-mobile text-display-lg-mobile md:font-display-lg md:text-display-lg text-primary leading-tight">The Geometry of Silence</h1>
+<p class="font-body-lg text-body-lg text-on-surface-variant">by Elena Rostova</p>
+</div>
+<!-- Price & Status -->
+<div class="flex items-center justify-between border-y border-outline-variant py-stack-sm">
+<div class="font-headline-md text-headline-md text-primary">$45.00</div>
+<div class="flex items-center gap-2 text-surface-tint">
+<span class="material-symbols-outlined" data-icon="check_circle">check_circle</span>
+<span class="font-label-md text-label-md">In Stock</span>
+</div>
+</div>
+<!-- Action -->
+<button class="w-full bg-primary-container text-on-primary-container font-label-md text-label-md py-4 rounded-lg hover:bg-primary hover:text-on-primary transition-all active:scale-[0.98] shadow-sm flex items-center justify-center gap-2">
+<span class="material-symbols-outlined" data-icon="shopping_bag">shopping_bag</span>
+                    Add to Cart
+                </button>
+<!-- Description -->
+<div class="flex flex-col gap-stack-sm mt-stack-sm">
+<h2 class="font-headline-sm text-headline-sm text-primary">About this book</h2>
+<p class="font-body-md text-body-md text-on-surface-variant leading-relaxed">
+                        A profound exploration of minimalism in modern architectural design. Rostova examines how the absence of ornamentation and the strategic use of negative space create environments that foster contemplation and focus. This comprehensive volume features over 200 high-quality photographs from seminal projects around the globe, making it an essential reference for students and practitioners alike.
+                    </p>
+</div>
+<!-- Metadata -->
+<div class="bg-surface-container-low rounded-lg p-stack-sm grid grid-cols-2 gap-y-stack-sm gap-x-4 mt-stack-sm">
+<div class="flex flex-col">
+<span class="font-label-sm text-label-sm text-on-surface-variant">Publisher</span>
+<span class="font-body-md text-body-md text-primary">Architome Press</span>
+</div>
+<div class="flex flex-col">
+<span class="font-label-sm text-label-sm text-on-surface-variant">Publication Date</span>
+<span class="font-body-md text-body-md text-primary">Oct 12, 2023</span>
+</div>
+<div class="flex flex-col">
+<span class="font-label-sm text-label-sm text-on-surface-variant">Pages</span>
+<span class="font-body-md text-body-md text-primary">312</span>
+</div>
+<div class="flex flex-col">
+<span class="font-label-sm text-label-sm text-on-surface-variant">Language</span>
+<span class="font-body-md text-body-md text-primary">English</span>
+</div>
+<div class="flex flex-col col-span-2">
+<span class="font-label-sm text-label-sm text-on-surface-variant">ISBN-13</span>
+<span class="font-body-md text-body-md text-primary">978-1-234-56789-0</span>
+</div>
+</div>
+</div>
+</div>
+<!-- Related Books -->
+<div class="mt-stack-lg md:px-0">
+<h2 class="font-headline-sm text-headline-sm text-primary px-margin-mobile md:px-0 mb-stack-md">Related Titles</h2>
+<div class="flex overflow-x-auto no-scrollbar gap-4 px-margin-mobile md:px-0 pb-stack-sm snap-x">
+<!-- Related Item 1 -->
+<div class="min-w-[140px] md:min-w-[180px] snap-start flex flex-col gap-2 cursor-pointer group">
+<div class="aspect-[2/3] relative rounded bg-surface-container-low overflow-hidden border border-outline-variant/50 group-hover:shadow-md transition-shadow">
+<img class="w-full h-full object-cover" data-alt="A clean, minimalist book cover titled 'Structural Harmony'. The cover features a subtle interplay of light grey and muted emerald lines on a pristine white background. The typography is modern and elegant, reflecting a sophisticated editorial design aesthetic typical of high-end architectural publications." src="https://lh3.googleusercontent.com/aida-public/AB6AXuCUJCPCKivKUbuIKg5uwP07fZ0deSYtRpfWz0z0R7Jtjtdvomx5GqoTMePR6VcTInkHGKVidI77nR2tA10yMUOJsvuQ2o501F8MWoriyKupgq665ca9Qkbb0q2Wz1lJINi3Lrr-ldS961tG1mK3qxRvJKJ0jp3X5PMFU3LHvsFRr3L1mlQuu31TXAcGblBklTbi_NkUVcWpeHHSnACLCmhOPHMBD0Zt7sDboA2ul7fhtPe9Fi29Fqzlvw"/>
+</div>
+<div>
+<h3 class="font-label-md text-label-md text-primary truncate">Structural Harmony</h3>
+<p class="font-label-sm text-label-sm text-on-surface-variant truncate">David Chen</p>
+<p class="font-label-md text-label-md text-primary mt-1">$38.00</p>
+</div>
+</div>
+<!-- Related Item 2 -->
+<div class="min-w-[140px] md:min-w-[180px] snap-start flex flex-col gap-2 cursor-pointer group">
+<div class="aspect-[2/3] relative rounded bg-surface-container-low overflow-hidden border border-outline-variant/50 group-hover:shadow-md transition-shadow">
+<img class="w-full h-full object-cover" data-alt="A sleek, modern editorial book cover design resting on a flat surface. The cover is predominantly off-white with bold, stark black minimalist typography and a single small geometric accent in deep green. The lighting is bright and diffuse, creating a premium, gallery-like atmosphere." src="https://lh3.googleusercontent.com/aida-public/AB6AXuB3ckCgLXldAn4N_BvUfhcMFk0PY017J9qWqa-St3eCC2Vp_WCPuBgmAjR1-LJdgqMQF7_Rj55sewVY8vnDqFyDl0B4jTkUaqanOV2z-6qX5pgjD_QCEu7oWFEjqASg5GGE_5cH8TzPDQfoBhi9vg2qcfwgPNv3C3F_1rBPRq5kjDrWLaWs1h-Q1hTqhJ5a7cwzUP99B1DtpMPcUezC58LSKFDOEHfsDLmyDf1L-BergQKalI9AIons4w"/>
+</div>
+<div>
+<h3 class="font-label-md text-label-md text-primary truncate">The White Cube</h3>
+<p class="font-label-sm text-label-sm text-on-surface-variant truncate">Sarah Jenkins</p>
+<p class="font-label-md text-label-md text-primary mt-1">$42.00</p>
+</div>
+</div>
+<!-- Related Item 3 -->
+<div class="min-w-[140px] md:min-w-[180px] snap-start flex flex-col gap-2 cursor-pointer group">
+<div class="aspect-[2/3] relative rounded bg-surface-container-low overflow-hidden border border-outline-variant/50 group-hover:shadow-md transition-shadow">
+<img class="w-full h-full object-cover" data-alt="An elegant, minimalist book cover titled 'Form &amp; Function'. The design utilizes a vast expanse of negative space in soft paper-white, with a delicate, abstract wireframe graphic in the center. The aesthetic is clean, professional, and evocative of high-end design catalogs." src="https://lh3.googleusercontent.com/aida-public/AB6AXuAGTAKqH_FYJZc23TjRyg3jTj7SsB3JhZK8HbgmmziIcEZWQM6YQmSxOXP6wD7dHYX0v_GF54jFSqLZoMoGLCdW6gzPMK-JvG2X5dnygTfQHXsGFVJx9-5c_rnWD69g4sf8H4pTtjHcpzJb28JVcpthIJUFixgl2RiCPXhOQJLZTpZZN3M8JPlPQcV4Epvh8TEFJ9wngT8XXesKBpVGZe8eP3NDdeRGSZSHPCdwlov79OAZdBc32INv7A"/>
+</div>
+<div>
+<h3 class="font-label-md text-label-md text-primary truncate">Form &amp; Function</h3>
+<p class="font-label-sm text-label-sm text-on-surface-variant truncate">Marcus Thorne</p>
+<p class="font-label-md text-label-md text-primary mt-1">$35.00</p>
+</div>
+</div>
+<!-- Related Item 4 -->
+<div class="min-w-[140px] md:min-w-[180px] snap-start flex flex-col gap-2 cursor-pointer group">
+<div class="aspect-[2/3] relative rounded bg-surface-container-low overflow-hidden border border-outline-variant/50 group-hover:shadow-md transition-shadow">
+<img class="w-full h-full object-cover" data-alt="A sophisticated book cover featuring a stark, high-contrast monochrome photograph of brutalist architecture. The title typography is set in a classic serif font, providing a counterpoint to the modern imagery. The overall composition is balanced, editorial, and visually striking." src="https://lh3.googleusercontent.com/aida-public/AB6AXuBat3HCxT9KL7MfxpqueYfWVJMoAp4wV0wXYsWnMpaiOEoKyfpYzvWlHXluxQbFo0foYde-d1wU1vBUc1ekwFk2junRrZV_FhpyRXREmwUV6GXit_3vdgi180RpfrYipu3ZC0fDMsTlHylCgX6-I8Bxyi9xfpI2bq0HleiIxG6Qa0fV3zqgHpMeuOMS5GhVB8-QIZNWrXHhTDO1GhXD3dYpIy7jtCtDVuJyOwd8xCVvk_oquGDwqOqW6w"/>
+</div>
+<div>
+<h3 class="font-label-md text-label-md text-primary truncate">Concrete Poetry</h3>
+<p class="font-label-sm text-label-sm text-on-surface-variant truncate">Liam O'Connor</p>
+<p class="font-label-md text-label-md text-primary mt-1">$50.00</p>
+</div>
+</div>
+</div>
+</div>
+</main>
+<!-- BottomNavBar (Hidden on MD up) -->
+<nav class="md:hidden bg-surface dark:bg-surface-dim fixed bottom-0 w-full z-50 border-t border-outline-variant dark:border-on-surface-variant flex justify-around items-center h-16 w-full pb-safe">
+<a class="flex flex-col items-center justify-center text-on-surface-variant dark:text-on-surface-variant opacity-70 hover:text-primary dark:hover:text-inverse-primary active:scale-95 transition-transform w-1/5" href="#">
+<span class="material-symbols-outlined" data-icon="home">home</span>
+<span class="font-label-sm text-label-sm mt-1">Home</span>
+</a>
+<a class="flex flex-col items-center justify-center text-primary dark:text-inverse-primary font-bold hover:text-primary dark:hover:text-inverse-primary active:scale-95 transition-transform w-1/5" href="#">
+<span class="material-symbols-outlined" data-icon="menu_book" data-weight="fill" style="font-variation-settings: 'FILL' 1;">menu_book</span>
+<span class="font-label-sm text-label-sm mt-1">Catalog</span>
+</a>
+<a class="flex flex-col items-center justify-center text-on-surface-variant dark:text-on-surface-variant opacity-70 hover:text-primary dark:hover:text-inverse-primary active:scale-95 transition-transform w-1/5" href="#">
+<span class="material-symbols-outlined" data-icon="favorite">favorite</span>
+<span class="font-label-sm text-label-sm mt-1">Wishlist</span>
+</a>
+<a class="flex flex-col items-center justify-center text-on-surface-variant dark:text-on-surface-variant opacity-70 hover:text-primary dark:hover:text-inverse-primary active:scale-95 transition-transform w-1/5" href="#">
+<span class="material-symbols-outlined" data-icon="shopping_bag">shopping_bag</span>
+<span class="font-label-sm text-label-sm mt-1">Cart</span>
+</a>
+<a class="flex flex-col items-center justify-center text-on-surface-variant dark:text-on-surface-variant opacity-70 hover:text-primary dark:hover:text-inverse-primary active:scale-95 transition-transform w-1/5" href="#">
+<span class="material-symbols-outlined" data-icon="person">person</span>
+<span class="font-label-sm text-label-sm mt-1">Account</span>
+</a>
+</nav>
+</body></html>

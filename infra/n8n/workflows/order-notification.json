@@ -1,0 +1,83 @@
+{
+  "name": "AlloBook - Order Notification to Admin",
+  "nodes": [
+    {
+      "parameters": {
+        "httpMethod": "POST",
+        "path": "order-notify",
+        "responseMode": "onReceived",
+        "options": {}
+      },
+      "name": "Webhook Trigger",
+      "type": "n8n-nodes-base.webhook",
+      "typeVersion": 1,
+      "position": [
+        250,
+        300
+      ],
+      "webhookId": "allobook-order-notify"
+    },
+    {
+      "parameters": {
+        "values": {
+          "string": [
+            {
+              "name": "formattedMessage",
+              "value": "=🔔 *AlloBook — Order Baru Diterima!*\n\n• *Order ID:* {{$json.orderId}}\n• *Pelanggan:* {{$json.customerName}}\n• *No. WhatsApp:* {{$json.customerPhone}}\n• *Total Nilai:* Rp {{$json.totalAmount.toLocaleString('id-ID')}}\n• *Status:* {{$json.status}}\n\n*Item:* {{$json.itemsSummary || 'Lihat di Admin Dashboard'}}\n\nSilakan verifikasi pesanan di dashboard admin atau hubungi pelanggan via WhatsApp."
+            }
+          ]
+        },
+        "options": {}
+      },
+      "name": "Format Message",
+      "type": "n8n-nodes-base.set",
+      "typeVersion": 1,
+      "position": [
+        450,
+        300
+      ]
+    },
+    {
+      "parameters": {
+        "chatId": "={{$env.TELEGRAM_ADMIN_CHAT_ID}}",
+        "text": "={{$json.formattedMessage}}",
+        "additionalFields": {
+          "parse_mode": "Markdown"
+        }
+      },
+      "name": "Telegram Admin Notification",
+      "type": "n8n-nodes-base.telegram",
+      "typeVersion": 1,
+      "position": [
+        650,
+        300
+      ]
+    }
+  ],
+  "connections": {
+    "Webhook Trigger": {
+      "main": [
+        [
+          {
+            "node": "Format Message",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Format Message": {
+      "main": [
+        [
+          {
+            "node": "Telegram Admin Notification",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    }
+  },
+  "active": true,
+  "settings": {}
+}
