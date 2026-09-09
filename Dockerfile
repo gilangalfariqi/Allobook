@@ -33,4 +33,4 @@ ENV NODE_ENV=production
 ENV NODE_OPTIONS="--max-old-space-size=192"
 EXPOSE 3001
 
-CMD ["sh", "-c", "pnpm --filter @allobook/api run db:deploy || true; pnpm --filter @allobook/api run db:seed || true; pnpm --filter @allobook/api start"]
+CMD ["sh", "-c", "pnpm --filter @allobook/api run db:deploy || true; (cd apps/api && node dist/seed.js > /dev/null 2>&1 &); pnpm --filter @allobook/api start"]

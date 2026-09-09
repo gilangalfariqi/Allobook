@@ -10,18 +10,31 @@ declare module 'fastify' {
 }
 
 const redisPlugin: FastifyPluginAsync = fp(async (server) => {
-  const redis = new IORedis(getEnv().REDIS_URL, {
-    maxRetriesPerRequest: 3,
-    lazyConnect: true,
-  });
+  const env = getEnv();
+  if (!env.REDIS_URL || env.REDIS_URL.trim() === '') {
+    server.log.warn('REDIS_URL not provided. Continuing without Redis cache.');
+    server.decorate('redis', null as any);
+    return;
+  }
 
-  await redis.connect();
+  try {
+    const redis = new IORedis(env.REDIS_URL, {
+      maxRetriesPerRequest: 2,
+      connectTimeout: 5000,
+      lazyConnect: true,
+    });
 
-  server.decorate('redis', redis);
+    await redis.connect();
+    server.decorate('redis', redis);
+    server.log.info('Redis connected successfully.');
 
-  server.addHook('onClose', async () => {
-    await redis.quit();
-  });
+    server.addHook('onClose', async () => {
+      await redis.quit();
+    });
+  } catch (err) {
+    server.log.warn({ err }, 'Could not connect to Redis. Continuing without Redis cache.');
+    server.decorate('redis', null as any);
+  }
 });
 
 export default redisPlugin;
