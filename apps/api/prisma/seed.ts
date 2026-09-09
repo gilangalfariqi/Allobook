@@ -1,4 +1,4 @@
-import { PrismaClient, Role } from '@prisma/client';
+import { PrismaClient } from '@prisma/client';
 import argon2 from 'argon2';
 
 const prisma = new PrismaClient();
@@ -106,7 +106,7 @@ async function seedUsers() {
       email: 'admin@allobook.id',
       name: 'Admin AlloBook',
       passwordHash: adminHash,
-      role: Role.ADMIN,
+      role: 'ADMIN',
     },
   });
 
@@ -117,7 +117,7 @@ async function seedUsers() {
       email: 'budi@example.com',
       name: 'Budi Santoso',
       passwordHash: userHash,
-      role: Role.USER,
+      role: 'USER',
     },
   });
 
@@ -128,7 +128,7 @@ async function seedUsers() {
       email: 'sari@example.com',
       name: 'Sari Dewi',
       passwordHash: userHash,
-      role: Role.USER,
+      role: 'USER',
     },
   });
 
@@ -407,7 +407,7 @@ async function main() {
 }
 
 main()
-  .catch((e) => {
+  .catch((e: any) => {
     console.error('\n❌ Seed failed:', e);
     process.exit(1);
   })

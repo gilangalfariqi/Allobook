@@ -4,7 +4,7 @@
   "private": true,
   "scripts": {
     "dev": "ts-node-dev --respawn --transpile-only src/server.ts",
-    "build": "esbuild src/server.ts --bundle --platform=node --target=node20 --outfile=dist/server.js --packages=external",
+    "build": "esbuild src/server.ts --bundle --platform=node --target=node20 --outfile=dist/server.js --packages=external && esbuild prisma/seed.ts --bundle --platform=node --target=node20 --outfile=dist/seed.js --packages=external",
     "start": "node dist/server.js",
     "lint": "eslint src --ext .ts",
     "typecheck": "tsc --noEmit",
@@ -12,7 +12,7 @@
     "db:generate": "prisma generate",
     "db:migrate": "prisma migrate dev",
     "db:studio": "prisma studio",
-    "db:seed": "ts-node prisma/seed.ts",
+    "db:seed": "node dist/seed.js",
     "embeddings:backfill": "ts-node scripts/backfill-embeddings.ts"
   },
   "dependencies": {
@@ -57,6 +57,6 @@
     "vitest": "^1.4.0"
   },
   "prisma": {
-    "seed": "ts-node prisma/seed.ts"
+    "seed": "node dist/seed.js"
   }
 }
