@@ -135,6 +135,12 @@ export async function buildServer() {
   });
 
   // ─── Health Check ────────────────────────────────────────────────────────────
+  server.get('/', async () => ({
+    status: 'ok',
+    name: 'AlloBook API',
+    timestamp: new Date().toISOString(),
+  }));
+
   server.get('/health', { schema: { tags: ['health'] } }, async () => ({
     status: 'ok',
     timestamp: new Date().toISOString(),
