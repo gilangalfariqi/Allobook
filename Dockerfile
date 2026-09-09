@@ -26,7 +26,7 @@ COPY apps/api ./apps/api
 # Build shared-types, generate prisma client, and compile api
 RUN pnpm --filter @allobook/shared-types build
 RUN pnpm --filter @allobook/api prisma generate
-RUN NODE_OPTIONS="--max-old-space-size=2048" pnpm --filter @allobook/api build
+RUN pnpm --filter @allobook/api build
 
 ENV PORT=3001
 ENV NODE_ENV=production
