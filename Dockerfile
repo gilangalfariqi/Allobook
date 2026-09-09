@@ -25,7 +25,7 @@ COPY apps/api ./apps/api
 
 # Build shared-types, generate prisma client, and compile api
 RUN pnpm --filter @allobook/shared-types build
-RUN pnpm --filter @allobook/api prisma generate
+RUN pnpm --filter @allobook/api run db:generate
 RUN pnpm --filter @allobook/api build
 
 ENV PORT=3001
@@ -33,4 +33,4 @@ ENV NODE_ENV=production
 ENV NODE_OPTIONS="--max-old-space-size=192"
 EXPOSE 3001
 
-CMD ["sh", "-c", "pnpm --filter @allobook/api prisma migrate deploy && pnpm --filter @allobook/api run db:seed && pnpm --filter @allobook/api start"]
+CMD ["sh", "-c", "pnpm --filter @allobook/api run db:deploy || true; pnpm --filter @allobook/api run db:seed || true; pnpm --filter @allobook/api start"]
