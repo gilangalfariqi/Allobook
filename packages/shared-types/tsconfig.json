@@ -1,6 +1,12 @@
 {
-  "extends": "@allobook/config/tsconfig/base.json",
   "compilerOptions": {
+    "target": "ES2022",
+    "strict": true,
+    "esModuleInterop": true,
+    "skipLibCheck": true,
+    "forceConsistentCasingInFileNames": true,
+    "noImplicitAny": true,
+    "isolatedModules": true,
     "module": "CommonJS",
     "moduleResolution": "node",
     "outDir": "dist",

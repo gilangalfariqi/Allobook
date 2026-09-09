@@ -57,3 +57,22 @@ jobs:
           NEXT_PUBLIC_API_URL: http://localhost:3001
           NEXT_PUBLIC_APP_URL: http://localhost:3000
           NODE_ENV: production
+
+  deploy-backend:
+    name: Deploy Backend to Back4App
+    runs-on: ubuntu-latest
+    needs: validate
+    if: github.ref == 'refs/heads/main' && github.event_name == 'push'
+
+    steps:
+      - name: Trigger Back4App Container Redeploy
+        run: |
+          curl --fail -s -X POST \
+            "https://api.back4app.com/apps/${{ secrets.BACK4APP_APP_ID }}/deploy" \
+            -H "X-Parse-Application-Id: ${{ secrets.BACK4APP_APP_ID }}" \
+            -H "X-Parse-Master-Key: ${{ secrets.BACK4APP_MASTER_KEY }}" \
+            -H "Content-Type: application/json" \
+            -d '{}' \
+            && echo "✅ Deploy triggered successfully" \
+            || echo "⚠️ Deploy trigger failed (manual deploy may be needed)"
+        continue-on-error: true
