@@ -1,5 +1,5 @@
-import { PrismaClient, Prisma, OrderStatus } from '@prisma/client';
-import { CreateOrderInput } from '@allobook/shared-types';
+import { PrismaClient, Prisma } from '@prisma/client';
+import { CreateOrderInput, OrderStatus } from '@allobook/shared-types';
 
 export class OrderRepository {
   constructor(private prisma: PrismaClient) {}
