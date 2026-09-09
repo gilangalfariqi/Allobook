@@ -20,13 +20,13 @@ export class OrderRepository {
         customerPhone: data.customerPhone,
         customerEmail: data.customerEmail,
         shippingAddress: data.shippingAddress,
-        totalAmount: new Prisma.Decimal(data.totalAmount),
+        totalAmount: data.totalAmount,
         status: OrderStatus.PENDING,
         items: {
           create: data.items.map((item) => ({
             bookId: item.bookId,
             quantity: item.quantity,
-            priceAtOrder: new Prisma.Decimal(item.priceAtOrder),
+            priceAtOrder: item.priceAtOrder,
           })),
         },
       },

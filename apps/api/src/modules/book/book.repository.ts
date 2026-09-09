@@ -146,7 +146,7 @@ export class BookRepository {
     return this.prisma.book.create({
       data: {
         ...bookData,
-        price: new Prisma.Decimal(bookData.price),
+        price: bookData.price,
         publishedAt: bookData.publishedAt ? new Date(bookData.publishedAt) : null,
         categories: categoryIds?.length
           ? {
@@ -173,7 +173,7 @@ export class BookRepository {
       where: { id },
       data: {
         ...bookData,
-        price: bookData.price !== undefined ? new Prisma.Decimal(bookData.price) : undefined,
+        price: bookData.price !== undefined ? bookData.price : undefined,
         publishedAt: bookData.publishedAt ? new Date(bookData.publishedAt) : undefined,
         categories: categoryIds
           ? {
