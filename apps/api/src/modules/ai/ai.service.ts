@@ -39,10 +39,20 @@ export class AiService {
   private initBackgroundQueue() {
     try {
       const redisUrl = new URL(getEnv().REDIS_URL);
-      const connection = {
+      const connection: any = {
         host: redisUrl.hostname,
         port: parseInt(redisUrl.port || '6379', 10),
       };
+
+      if (redisUrl.password) {
+        connection.password = decodeURIComponent(redisUrl.password);
+      }
+      if (redisUrl.username && redisUrl.username !== 'default') {
+        connection.username = decodeURIComponent(redisUrl.username);
+      }
+      if (redisUrl.protocol === 'rediss:') {
+        connection.tls = { rejectUnauthorized: false };
+      }
 
       this.embeddingQueue = new Queue('book-embedding', { connection });
 
