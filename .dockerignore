@@ -1,0 +1,10 @@
+node_modules
+.next
+dist
+build
+.git
+.turbo
+*.tsbuildinfo
+*.log
+coverage
+e2e
