@@ -3,8 +3,8 @@ import { z } from 'zod';
 const envSchema = z.object({
   DATABASE_URL: z.string().url(),
   REDIS_URL: z.string(),
-  MEILISEARCH_HOST: z.string(),
-  MEILISEARCH_API_KEY: z.string(),
+  MEILISEARCH_HOST: z.string().optional().default(''),
+  MEILISEARCH_API_KEY: z.string().optional().default(''),
   JWT_SECRET: z.string().min(16),
   JWT_REFRESH_SECRET: z.string().min(16),
   JWT_ACCESS_EXPIRES: z.string().default('15m'),
