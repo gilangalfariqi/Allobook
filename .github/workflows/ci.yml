@@ -11,6 +11,9 @@ jobs:
     name: Build, Typecheck & Test
     runs-on: ubuntu-latest
 
+    env:
+      NODE_OPTIONS: '--max-old-space-size=4096'
+
     steps:
       - name: Checkout Repository
         uses: actions/checkout@v4
@@ -31,6 +34,9 @@ jobs:
 
       - name: Build Shared Packages
         run: pnpm --filter @allobook/shared-types build
+
+      - name: Generate Prisma Client
+        run: pnpm --filter @allobook/api prisma generate
 
       - name: Run Typecheck Across Monorepo
         run: pnpm turbo run typecheck
