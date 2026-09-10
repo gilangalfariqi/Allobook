@@ -38,7 +38,22 @@ export async function buildServer() {
 
   // ─── Security ───────────────────────────────────────────────────────────────
   await server.register(cors, {
-    origin: env.NODE_ENV === 'production' ? env.NEXT_PUBLIC_APP_URL ?? false : true,
+    origin:
+      env.NODE_ENV === 'production'
+        ? (origin, cb) => {
+            const allowed = [
+              env.NEXT_PUBLIC_APP_URL,           // e.g. https://allobook.vercel.app
+              /\.vercel\.app$/,                  // preview deployments
+              /\.b4a\.run$/,                     // back4app internal
+            ].filter(Boolean);
+            const isAllowed =
+              !origin ||
+              allowed.some((o) =>
+                o instanceof RegExp ? o.test(origin) : o === origin
+              );
+            cb(isAllowed ? null : new Error('Not allowed by CORS'), isAllowed);
+          }
+        : true,
     credentials: true,
   });
   await server.register(helmet);
