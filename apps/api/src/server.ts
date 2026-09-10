@@ -38,16 +38,19 @@ export async function buildServer() {
 
   // ─── Security ───────────────────────────────────────────────────────────────
   await server.register(cors, {
-    origin:
-      env.NODE_ENV === 'production'
-        ? (
-            [
-              env.NEXT_PUBLIC_APP_URL,      // production frontend URL
-              /\.vercel\.app$/,             // all Vercel preview deployments
-              /\.b4a\.run$/,                // Back4App internal
-            ].filter(Boolean) as (string | RegExp)[]
-          )
-        : true,
+    origin: (origin, callback) => {
+      // Allow requests with no origin (server-to-server, mobile apps, curl)
+      if (!origin) {
+        callback(null, true);
+        return;
+      }
+      const isAllowed =
+        origin.endsWith('.vercel.app') ||
+        origin.endsWith('.b4a.run') ||
+        origin === env.NEXT_PUBLIC_APP_URL ||
+        env.NODE_ENV !== 'production';
+      callback(isAllowed ? null : new Error('CORS: Origin not allowed'), isAllowed);
+    },
     credentials: true,
   });
   await server.register(helmet);
