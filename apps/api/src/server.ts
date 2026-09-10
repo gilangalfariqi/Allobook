@@ -40,19 +40,13 @@ export async function buildServer() {
   await server.register(cors, {
     origin:
       env.NODE_ENV === 'production'
-        ? (origin, cb) => {
-            const allowed = [
-              env.NEXT_PUBLIC_APP_URL,           // e.g. https://allobook.vercel.app
-              /\.vercel\.app$/,                  // preview deployments
-              /\.b4a\.run$/,                     // back4app internal
-            ].filter(Boolean);
-            const isAllowed =
-              !origin ||
-              allowed.some((o) =>
-                o instanceof RegExp ? o.test(origin) : o === origin
-              );
-            cb(isAllowed ? null : new Error('Not allowed by CORS'), isAllowed);
-          }
+        ? (
+            [
+              env.NEXT_PUBLIC_APP_URL,      // production frontend URL
+              /\.vercel\.app$/,             // all Vercel preview deployments
+              /\.b4a\.run$/,                // Back4App internal
+            ].filter(Boolean) as (string | RegExp)[]
+          )
         : true,
     credentials: true,
   });
