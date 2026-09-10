@@ -376,8 +376,29 @@ GET    /docs                          # Swagger UI
 
 ## 12. Environment Variables (.env.example wajib ada)
 
+### Prisma + Supabase — Two-URL Pattern (penting!)
+
+Prisma dengan Supabase membutuhkan **dua** connection string yang berbeda:
+
+| Variable | Koneksi | Port | Digunakan untuk |
+|---|---|---|---|
+| `DATABASE_URL` | PgBouncer (Transaction Pooler) | 6543 | Runtime queries — wajib tambahkan `?pgbouncer=true` |
+| `DIRECT_URL` | Direct PostgreSQL | 5432 | `prisma migrate deploy` saja |
+
+**Kenapa?** PgBouncer transaction pooler tidak mendukung advisory lock yang dibutuhkan oleh `prisma migrate`. Jika migration dijalankan lewat pooler (port 6543), proses akan *hang* tanpa batas waktu dan server tidak pernah start.
+
+```bash
+DATABASE_URL=postgresql://...@pooler.supabase.com:6543/postgres?pgbouncer=true
+DIRECT_URL=postgresql://...@db.supabase.com:5432/postgres
+```
+
+Di Supabase: **Project Settings → Database → Connection String**
+- `DATABASE_URL` → mode **"Transaction pooler"** (port 6543) + tambah `?pgbouncer=true`
+- `DIRECT_URL` → mode **"Direct connection"** (port 5432)
+
 ```bash
 DATABASE_URL=postgresql://allobook:password@localhost:5432/allobook
+DIRECT_URL=postgresql://allobook:password@localhost:5432/allobook   # direct — prisma migrate
 REDIS_URL=redis://localhost:6379
 MEILISEARCH_HOST=http://localhost:7700
 MEILISEARCH_API_KEY=masterKey
