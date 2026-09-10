@@ -2,11 +2,12 @@ import { z } from 'zod';
 
 const envSchema = z.object({
   DATABASE_URL: z.string().url(),
-  REDIS_URL: z.string(),
+  REDIS_URL: z.string().optional().default(''),
+  NEXT_PUBLIC_APP_URL: z.string().optional().default('https://allobook-web.vercel.app'),
   MEILISEARCH_HOST: z.string().optional().default(''),
   MEILISEARCH_API_KEY: z.string().optional().default(''),
-  JWT_SECRET: z.string().min(16),
-  JWT_REFRESH_SECRET: z.string().min(16),
+  JWT_SECRET: z.string().min(16).default('allobook_jwt_secret_prod_2026_xK9mN3pQ'),
+  JWT_REFRESH_SECRET: z.string().min(16).default('allobook_refresh_secret_prod_2026_zR7vL2wY'),
   JWT_ACCESS_EXPIRES: z.string().default('15m'),
   JWT_REFRESH_EXPIRES: z.string().default('7d'),
   R2_ACCOUNT_ID: z.string().optional(),

@@ -47,11 +47,15 @@ export async function buildServer() {
       const isAllowed =
         origin.endsWith('.vercel.app') ||
         origin.endsWith('.b4a.run') ||
+        origin.includes('localhost') ||
+        origin.includes('127.0.0.1') ||
         origin === env.NEXT_PUBLIC_APP_URL ||
         env.NODE_ENV !== 'production';
-      callback(isAllowed ? null : new Error('CORS: Origin not allowed'), isAllowed);
+      callback(null, isAllowed);
     },
     credentials: true,
+    methods: ['GET', 'POST', 'PUT', 'PATCH', 'DELETE', 'OPTIONS'],
+    allowedHeaders: ['Content-Type', 'Authorization', 'X-Requested-With', 'Accept', 'Origin'],
   });
   await server.register(helmet);
 
