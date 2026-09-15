@@ -29,6 +29,7 @@ test-results
 .DS_Store
 *.pem
 Thumbs.db
+INTERVIEW_MASTER_GUIDE.md
 
 # Logs
 *.log

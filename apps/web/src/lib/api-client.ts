@@ -2,10 +2,11 @@ const API_URL = process.env.NEXT_PUBLIC_API_URL || 'http://localhost:3001';
 
 interface RequestOptions extends RequestInit {
   token?: string;
+  timeout?: number;
 }
 
 export async function apiClient<T>(endpoint: string, options: RequestOptions = {}): Promise<T> {
-  const { token, headers, ...rest } = options;
+  const { token, headers, timeout = 6000, signal, ...rest } = options;
 
   const authHeader: Record<string, string> = {};
 
@@ -19,20 +20,32 @@ export async function apiClient<T>(endpoint: string, options: RequestOptions = {
 
   const isFormData = rest.body instanceof FormData;
 
-  const response = await fetch(`${API_URL}${endpoint}`, {
-    ...rest,
-    headers: {
-      ...(isFormData ? {} : { 'Content-Type': 'application/json' }),
-      ...authHeader,
-      ...(headers as Record<string, string>),
-    },
-  });
+  const controller = new AbortController();
+  const timeoutId = setTimeout(() => controller.abort(), timeout);
 
-  const data = await response.json().catch(() => null);
-
-  if (!response.ok) {
-    throw new Error(data?.message || data?.error || `HTTP error ${response.status}`);
+  if (signal) {
+    signal.addEventListener('abort', () => controller.abort());
   }
 
-  return data as T;
+  try {
+    const response = await fetch(`${API_URL}${endpoint}`, {
+      ...rest,
+      signal: controller.signal,
+      headers: {
+        ...(isFormData ? {} : { 'Content-Type': 'application/json' }),
+        ...authHeader,
+        ...(headers as Record<string, string>),
+      },
+    });
+
+    const data = await response.json().catch(() => null);
+
+    if (!response.ok) {
+      throw new Error(data?.message || data?.error || `HTTP error ${response.status}`);
+    }
+
+    return data as T;
+  } finally {
+    clearTimeout(timeoutId);
+  }
 }

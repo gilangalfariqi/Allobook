@@ -3,6 +3,9 @@ import Image from 'next/image';
 import { BookCard } from '@/components/book-card';
 import { apiClient } from '@/lib/api-client';
 
+export const dynamic = 'force-dynamic';
+
+
 async function getHomeData() {
   try {
     const [booksData, preOrderData] = await Promise.all([
